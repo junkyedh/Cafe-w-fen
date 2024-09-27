@@ -7,7 +7,6 @@ export interface IconButtonProps {
   activeColor?: string; //
   disabledColor?: string; //
   isDisabled?: boolean; //
-  isActive?: boolean; //pressed
   ariaLabel?: string; //
   tabIndex?: number; //
   tooltip?: string; //
@@ -16,5 +15,6 @@ export interface IconButtonProps {
   onFocus?: React.FocusEventHandler<HTMLButtonElement>; //
   onClick?: React.MouseEventHandler<HTMLButtonElement>; //
   isIconOnly?: boolean; //
-  backgroundColor?: string;
+  iconColor?: string;
+  textColor?: string;
 }

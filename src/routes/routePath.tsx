@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Icon from "@/components/ui/Icons";
 
 export const routePath = [
     {
@@ -33,6 +34,8 @@ function Home() {
     return (
         <div>
             <h2>Home</h2>
+           <Icon iconName="backpack" size="lg" color="success" />
+
         </div>
     );
 }

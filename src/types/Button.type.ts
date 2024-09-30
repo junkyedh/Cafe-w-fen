@@ -1,11 +1,10 @@
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: "link" | "primary" | "secondary" | "teriary";
+  variant?: "link" | "primary" | "secondary" | "tertiary"; // Sửa lỗi chính tả từ "teriary" thành "tertiary"
   size: "small" | "medium" | "large";
   fullWidth?: boolean;
   loading?: boolean;
   icon?: React.ReactNode;
-  href?: string;
   block?: boolean;
   rounded: "none" | "sm" | "md" | "lg" | "full";
   hover?: string;
@@ -18,6 +17,8 @@ export interface ButtonProps
   textColor?: string;
   padding?: string;
   iconSpacing?: string;
+  width?: string;
+  height?: string;
   type?: "button" | "submit" | "reset";
 
   justifyContent?:
@@ -27,7 +28,7 @@ export interface ButtonProps
     | "space-between"
     | "space-around";
   alignItems?: "center" | "flex-start" | "flex-end" | "baseline" | "stretch"; // căn chỉnh theo trục dọc
-  flexDirection?: "row" | "column";
+  display?: string; // Sửa từ "dispaly" thành "display"
   accessibleLabel?: string;
   onHover?: React.MouseEventHandler<HTMLButtonElement>;
 }

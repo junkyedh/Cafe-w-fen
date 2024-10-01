@@ -72,7 +72,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         tabIndex={0}
       ></textarea>
       {isInvalid && errorMessage && (
-        <span style={{ color: "red", fontSize: 12 }}>{errorMessage}</span>
+        <span style={{ color: "red", fontSize: 12,marginTop:4 }}>{errorMessage}</span>
       )}
       <h3 className="hint" style={{ fontSize: 12, marginTop: 10 }}>
         {hint}

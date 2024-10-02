@@ -12,8 +12,6 @@
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
     "@types/redux-logger": "^3.0.13",
     "@types/redux-persist": "^4.3.1",
     "axios": "^1.7.7",
@@ -60,6 +58,9 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
-    "@craco/types": "^7.1.0"
+    "@craco/types": "^7.1.0",
+    "@svgr/webpack": "^8.1.0",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0"
   }
 }

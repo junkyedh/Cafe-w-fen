@@ -10,6 +10,7 @@ const borderRadiusMap: Record<string, string> = {
   "2xl": "1rem", // 16px
   "3xl": "1.5rem", // 24px
 };
+
 const TextArea: React.FC<TextAreaProps> = ({
   title,
   placeHolder,

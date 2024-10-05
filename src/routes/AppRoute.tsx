@@ -17,6 +17,19 @@ export default function AppRoute() {
 
   const routePathRender = () => {
     return routePath.map((route, index) => {
+      if (route.children) {
+        return (
+          <Route key={index} path={route.path} element={route.component}>
+            {route.children.map((subRoute, subIndex) => (
+              <Route
+                key={subIndex}
+                path={subRoute.path}
+                element={subRoute.component}
+              />
+            ))}
+          </Route>
+        );
+      }
       return (
         <Route
           key={index}
@@ -26,7 +39,7 @@ export default function AppRoute() {
         />
       );
     });
-  }
+  };
 
   return (
     <Routes>

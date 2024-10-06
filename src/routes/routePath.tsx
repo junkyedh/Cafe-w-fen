@@ -1,28 +1,114 @@
-import IconButton from "@/components/ui/IconButton";
 import { Link } from "react-router-dom";
-import Icon from "@/components/ui/Icons";
 
+// Định nghĩa các route trong ứng dụng
 export const routePath = [
   {
-    index: true,
-    path: "",
-    icon: "fas fa-home",
-    title: "Trang chủ",
-    component: <Home />,
+    index: false,
+    path: "warehouse",
+    icon: "far fa-circle",
+    title: "Warehouse",
+    component: <Warehouse />,
   },
   {
     index: false,
-    path: "about",
-    icon: "fas fa-info-circle",
-    title: "Thông tin",
-    component: <About />,
+    path: "my-warehouse",
+    icon: "far fa-circle",
+    title: "My Warehouse",
+    children: [
+      {
+        index: false,
+        path: "product-management",
+        title: "Product Management",
+        component: <ProductManagement />,
+      },
+      {
+        index: false,
+        path: "my-warehouse",
+        title: "My Warehouse",
+        component: <MyWarehouse />,
+      },
+      {
+        index: false,
+        path: "daily",
+        title: "Daily Report",
+        component: <DailyReport />,
+      },
+    ],
   },
   {
     index: false,
-    path: "dashboard",
-    icon: "fas fa-tachometer-alt",
-    title: "Quản lí danh mục",
-    component: <Dashboard />,
+    path: "import-management",
+    icon: "far fa-circle",
+    title: "Import Management",
+    component: <ImportManagement />,
+  },
+  {
+    index: false,
+    path: "export-management",
+    icon: "far fa-circle",
+    title: "Export Management",
+    component: <ExportManagement />,
+  },
+  {
+    index: false,
+    path: "transportation",
+    icon: "far fa-circle",
+    title: "Transportation",
+    children: [
+      {
+        index: false,
+        path: "vehicle",
+        title: "Vehicle",
+        component: <Vehicle />,
+      },
+      {
+        index: false,
+        path: "driver",
+        title: "Driver",
+        component: <Driver />,
+      },
+    ],
+  },
+  {
+    index: false,
+    path: "logistic",
+    icon: "far fa-circle",
+    title: "Logistic",
+    children: [
+      {
+        index: false,
+        path: "orders",
+        title: "Orders",
+        component: <Orders />,
+      },
+      {
+        index: false,
+        path: "shipment",
+        title: "Shipment",
+        component: <Shipment />,
+      },
+    ],
+  },
+  {
+    index: false,
+    path: "report",
+    icon: "far fa-circle",
+    title: "Report",
+    component: <Report />,
+  },
+  {
+    index: false,
+    path: "salary",
+    icon: "far fa-circle",
+    title: "Salary",
+    component: <Salary />,
+  },
+  {
+    index: false,
+    path: "account",
+    icon: "far fa-circle",
+    title: "Account",
+    component: <Account />,
   },
   {
     index: false,
@@ -31,28 +117,120 @@ export const routePath = [
   },
 ];
 
-function Home() {
-    return (
-        <div>
-            <h2>Home</h2>
-           <Icon iconName="backpack" size="lg" color="success" />
-
-        </div>
-    );
-}
-
-function About() {
+// Các component sử dụng trong routePath
+function Warehouse() {
   return (
     <div>
-      <h2>About</h2>
+      <h2>Warehouse</h2>
+      <p>Quản lý thông tin kho hàng</p>
     </div>
   );
 }
 
-function Dashboard() {
+function MyWarehouse() {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>My Warehouse</h2>
+      <p>Chi tiết kho hàng của bạn</p>
+    </div>
+  );
+}
+
+function ProductManagement() {
+  return (
+    <div>
+      <h2>Product Management</h2>
+      <p>Quản lý sản phẩm trong kho</p>
+    </div>
+  );
+}
+
+function DailyReport() {
+  return (
+    <div>
+      <h2>Daily Report</h2>
+      <p>Báo cáo hàng ngày</p>
+    </div>
+  );
+}
+
+function ImportManagement() {
+  return (
+    <div>
+      <h2>Import Management</h2>
+      <p>Quản lý thông tin nhập kho</p>
+    </div>
+  );
+}
+
+function ExportManagement() {
+  return (
+    <div>
+      <h2>Export Management</h2>
+      <p>Quản lý thông tin xuất kho</p>
+    </div>
+  );
+}
+
+function Vehicle() {
+  return (
+    <div>
+      <h2>Vehicle</h2>
+      <p>Quản lý phương tiện vận chuyển</p>
+    </div>
+  );
+}
+
+function Driver() {
+  return (
+    <div>
+      <h2>Driver</h2>
+      <p>Quản lý tài xế và các thông tin liên quan</p>
+    </div>
+  );
+}
+
+function Orders() {
+  return (
+    <div>
+      <h2>Orders</h2>
+      <p>Quản lý đơn hàng trong hệ thống</p>
+    </div>
+  );
+}
+
+function Shipment() {
+  return (
+    <div>
+      <h2>Shipment</h2>
+      <p>Quản lý lô hàng và theo dõi trạng thái</p>
+    </div>
+  );
+}
+
+function Report() {
+  return (
+    <div>
+      <h2>Report</h2>
+      <p>Thống kê và báo cáo hoạt động</p>
+    </div>
+  );
+}
+
+function Salary() {
+  return (
+    <div>
+      <h2>Salary</h2>
+      <p>Quản lý lương và các chế độ nhân viên</p>
+    </div>
+  );
+}
+
+function Account() {
+  return (
+    <div>
+      <h2>Account</h2>
+      <p>Thông tin tài khoản cá nhân</p>
     </div>
   );
 }
@@ -60,9 +238,9 @@ function Dashboard() {
 function NoMatch() {
   return (
     <div>
-      <h2>Nothing to see here!</h2>
+      <h2>Không tìm thấy trang!</h2>
       <p>
-        <Link to="/">Go to the home page</Link>
+        <Link to="/">Quay lại trang chủ</Link>
       </p>
     </div>
   );

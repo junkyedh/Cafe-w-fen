@@ -1,42 +1,113 @@
-import huyHieuCA from "@/assets/HuyHieuCA.png";
-import sidebarStyles from "@/components/sidebar/Sidebar.module.css";
 import { routePath } from "@/routes/routePath";
 import { comparePathname } from "@/utils/uri";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import "./Sidebar.scss";
+
+type SubRoutesState = {
+  [key: string]: boolean;
+};
 
 export default function Sidebar() {
-    const [currentPath, setCurrentPath] = useState('');
+  const [currentPath, setCurrentPath] = useState("");
+  const [openSubRoutes, setOpenSubRoutes] = useState<SubRoutesState>({});
 
-    const location = useLocation();
+  const location = useLocation();
 
-    useEffect(() => {
-        setCurrentPath(location.pathname);
-    }, [location]);
+  useEffect(() => {
+    setCurrentPath(location.pathname);
+  }, [location]);
 
-    const renderNavigationList = () => {
-        return routePath.map((route, index) => {
-            if (route.path === '*') {
-                return null;
+  const toggleSubRoutes = (path: string) => {
+    setOpenSubRoutes((prev) => ({
+      ...prev,
+      [path]: !prev[path],
+    }));
+  };
+
+  const renderNavigationList = () => {
+    return routePath.map((route, index) => {
+      if (route.path === "*") {
+        return null;
+      }
+
+      const hasChildren = route.children && route.children.length > 0;
+      const isActive = comparePathname(route.path, currentPath);
+      const isOpen = openSubRoutes[route.path];
+
+      return (
+        <li key={index} className={`nav-item ${hasChildren ? "dropdown" : ""}`}>
+          <Link
+            to={hasChildren ? "#" : route.path}
+            className={`nav-link ${isActive ? "nav-link-active" : "text-dark"}`}
+            onClick={
+              hasChildren
+                ? (e) => {
+                    e.preventDefault();
+                    toggleSubRoutes(route.path);
+                  }
+                : undefined
             }
-            return (
-                <li key={index} className="nav-item">
-                    <Link to={route.path} className={`nav-link ${comparePathname(route.path, currentPath) ? 'active' : 'text-dark'}`}>
-                        <i className={route.icon}></i>
-                        <span className="ms-2">{route.title}</span>
-                    </Link>
-                </li>
-            );
-        });
-    }
+          >
+            <span className="icon-circle">
+              <i className={route.icon}></i>
+            </span>
+            <span
+              className={`title ${isActive ? "title-active" : "text-dark"}`}
+            >
+              {route.title}
+            </span>
+            {hasChildren && (
+              <span className={`arrow ${isOpen ? "up" : "down"}`}>
+                <i className={`fas fa-chevron-${isOpen ? "up" : "down"}`}></i>
+              </span>
+            )}
+          </Link>
 
-    return (
-        <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 min-vh-100">
-            <img className={sidebarStyles.huyHieu} src={huyHieuCA} alt="Công an hiệu" />
-            <h3 className="mt-2 align-self-center fw-bold">Giám sát</h3>
-            <ul className="nav nav-pills flex-column mb-auto w-100">
-                {renderNavigationList()}
+          {hasChildren && isOpen && (
+            <ul className="nav nav-pills flex-column ms-3">
+              {route.children.map((subRoute, subIndex) => (
+                <li key={subIndex} className="nav-item">
+                  <Link
+                    to={`${route.path}/${subRoute.path}`} // Kết hợp với route cha
+                    className={`nav-link ${
+                      comparePathname(
+                        `${route.path}/${subRoute.path}`,
+                        currentPath
+                      )
+                        ? "nav-link-active"
+                        : "text-dark"
+                    }`}
+                  >
+                    <span
+                      className={`title ${
+                        comparePathname(
+                          `${route.path}/${subRoute.path}`,
+                          currentPath
+                        )
+                          ? "title-active"
+                          : "text-dark"
+                      }`}
+                    >
+                      {subRoute.title}
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
-        </div>
-    );
+          )}
+        </li>
+      );
+    });
+  };
+
+  return (
+    <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 min-vh-100 sidebar">
+      <h1 className="logo">LOGO</h1>
+      <h5 className="systems">Systems</h5>
+      <ul className="nav nav-pills flex-column mb-auto w-120">
+        {renderNavigationList()}
+      </ul>
+    </div>
+  );
 }

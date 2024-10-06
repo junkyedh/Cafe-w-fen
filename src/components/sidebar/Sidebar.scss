@@ -1,0 +1,75 @@
+@import "../../scss/_variables.scss";
+
+.sidebar {
+  .menuList {
+    list-style: none;
+    width: 110px;
+  }
+
+  .logo {
+    font-family: $font-family;
+    font-weight: bold;
+    align-self: center;
+    margin-top: 18px;
+  }
+
+  .systems {
+    font-family: $font-family;
+    color: #bcbaba;
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: get-font-weight($font-weight, regular);
+  }
+
+  .title {
+    font-family: $font-family;
+    color: #000000;
+    font-size: 16px;
+    margin-left: 12px;
+    padding-bottom: 3px;
+  }
+
+  .title-active {
+    font-family: $font-family;
+    color: #ffffff; // Màu chữ cho tiêu đề active
+    font-size: 16px;
+    margin-left: 12px;
+    padding-bottom: 3px;
+  }
+
+  .nav-link {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    align-items: center;
+    display: flex;
+    width: 255px;
+
+    &.nav-link-active {
+      background-color: #3461ff; // Màu nền cho mục active
+      color: white; // Màu chữ cho mục active
+      padding-top: 11px;
+      padding-bottom: 11px;
+      align-items: center;
+      display: flex;
+      width: 255px;
+    }
+  }
+
+  .icon-circle i {
+    font-size: 24px;
+  }
+
+  .arrow {
+    margin-left: auto;
+    transition: transform 0.3s;
+  }
+
+  .arrow.up {
+    transform: rotate(180deg);
+  }
+
+  .arrow.down {
+    transform: rotate(0deg);
+  }
+}

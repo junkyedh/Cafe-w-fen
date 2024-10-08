@@ -11,6 +11,9 @@
 .content {
   width: calc(100% - var(--sidebar-width) - 40px);
   border-left: 1px solid #bcbaba; /* Đường viền bên trái */
+  flex-grow: 1;
+  padding: 0;
+  height: 100%;
 }
 
 .content:before {

@@ -1,13 +1,21 @@
+import PartnerListLayout from "@/components/partner-list/tab/tabLayout/PartnerListLayout";
 import { Link } from "react-router-dom";
 
 // Định nghĩa các route trong ứng dụng
 export const routePath = [
   {
     index: false,
+    path: "partner",
+    icon: "far fa-circle",
+    title: "Partner",
+    component: <Partner />
+  },
+  {
+    index: false,
     path: "warehouse",
     icon: "far fa-circle",
     title: "Warehouse",
-    component: <Warehouse />,
+    component: <Warehouse />
   },
   {
     index: false,
@@ -19,35 +27,35 @@ export const routePath = [
         index: false,
         path: "product-management",
         title: "Product Management",
-        component: <ProductManagement />,
+        component: <ProductManagement />
       },
       {
         index: false,
         path: "my-warehouse",
         title: "My Warehouse",
-        component: <MyWarehouse />,
+        component: <MyWarehouse />
       },
       {
         index: false,
         path: "daily",
         title: "Daily Report",
-        component: <DailyReport />,
-      },
-    ],
+        component: <DailyReport />
+      }
+    ]
   },
   {
     index: false,
     path: "import-management",
     icon: "far fa-circle",
     title: "Import Management",
-    component: <ImportManagement />,
+    component: <ImportManagement />
   },
   {
     index: false,
     path: "export-management",
     icon: "far fa-circle",
     title: "Export Management",
-    component: <ExportManagement />,
+    component: <ExportManagement />
   },
   {
     index: false,
@@ -59,15 +67,15 @@ export const routePath = [
         index: false,
         path: "vehicle",
         title: "Vehicle",
-        component: <Vehicle />,
+        component: <Vehicle />
       },
       {
         index: false,
         path: "driver",
         title: "Driver",
-        component: <Driver />,
-      },
-    ],
+        component: <Driver />
+      }
+    ]
   },
   {
     index: false,
@@ -79,50 +87,54 @@ export const routePath = [
         index: false,
         path: "orders",
         title: "Orders",
-        component: <Orders />,
+        component: <Orders />
       },
       {
         index: false,
         path: "shipment",
         title: "Shipment",
-        component: <Shipment />,
-      },
-    ],
+        component: <Shipment />
+      }
+    ]
   },
   {
     index: false,
     path: "report",
     icon: "far fa-circle",
     title: "Report",
-    component: <Report />,
+    component: <Report />
   },
   {
     index: false,
     path: "salary",
     icon: "far fa-circle",
     title: "Salary",
-    component: <Salary />,
+    component: <Salary />
   },
   {
     index: false,
     path: "account",
     icon: "far fa-circle",
     title: "Account",
-    component: <Account />,
+    component: <Account />
   },
   {
     index: false,
     path: "*",
-    component: <NoMatch />,
-  },
+    component: <NoMatch />
+  }
 ];
 
 // Các component sử dụng trong routePath
+function Partner() {
+  return <PartnerListLayout />;
+}
+
 function Warehouse() {
   return (
     <div>
       <h2>Warehouse</h2>
-      <p>Quản lý thông tin kho hàng</p>
+      <p>Chi tiết kho hàng</p>
     </div>
   );
 }

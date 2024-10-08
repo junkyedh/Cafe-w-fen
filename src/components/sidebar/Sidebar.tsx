@@ -21,7 +21,7 @@ export default function Sidebar() {
   const toggleSubRoutes = (path: string) => {
     setOpenSubRoutes((prev) => ({
       ...prev,
-      [path]: !prev[path],
+      [path]: !prev[path]
     }));
   };
 

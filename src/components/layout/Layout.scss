@@ -1,11 +1,20 @@
 /* Layout.module.css */
 :root {
-  --sidebar-width: 290px;
+  --sidebar-width: 282px;
 }
 
 .sidebar {
   width: var(--sidebar-width);
   background: #ffffff;
+  z-index: 100;
+  padding: 18px 0px 0 23px;
+}
+
+.navbar {
+  z-index: 100;
+  flex-grow: 1;
+  width: 100%;
+  padding: 0;
 }
 
 .content {

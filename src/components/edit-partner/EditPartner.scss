@@ -1,0 +1,118 @@
+@import "../../scss/_variables.scss";
+
+.container {
+  align-items: start;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: white;
+
+  .leftside {
+    border-right: 1px solid gray;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    height: 100%;
+
+    .title-text {
+      display: flex;
+      width: fit-content;
+      height: fit-content;
+      font-size: get-font-size($title-font-size, sm);
+      font-weight: get-font-weight($font-weight, semibold);
+      font-family: $font-family;
+      margin: 0;
+    }
+
+    .contentEdit {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+
+      table {
+        width: 100%; // Đảm bảo table chiếm toàn bộ chiều rộng
+        height: 100%; // Đặt table chiếm 100% chiều cao của content
+      }
+    }
+  }
+
+  .rightside {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    .title-text {
+      display: flex;
+      width: fit-content;
+      height: fit-content;
+      font-size: get-font-size($body-font-size, lg);
+      font-weight: get-font-weight($font-weight, medium);
+      font-family: $font-family;
+      margin: 0;
+      padding-bottom: 1rem;
+    }
+
+    .form-group {
+      padding-top: 10px;
+    }
+
+    .label {
+      font-size: get-font-size($body-font-size, rg);
+      font-weight: get-font-weight($font-weight, medium);
+      padding-bottom: 2px;
+    }
+
+    .first-card {
+      padding: 1rem;
+      background-color: get-color($primary, "100");
+      border-radius: 12px;
+    }
+
+    .second-card {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: get-color($primary, "100");
+      border-radius: 12px;
+    }
+
+    .btn-group {
+      align-items: start;
+      justify-content: end;
+      display: flex;
+      width: 100%;
+      margin-top: 1rem;
+      gap: 1rem;
+
+      .btn {
+        width: fit-content;
+        border-radius: 16px;
+      }
+
+      .btn-second {
+        border: 1px solid get-color($primary, "500");
+        color: get-color($primary, "500");
+        font-size: get-font-size($body-font-size, rg);
+        font-weight: get-font-weight($font-weight, medium);
+      }
+
+      .btn-pri {
+        border: 1px solid get-color($primary, "500");
+        background: get-color($primary, "500");
+        color: white;
+        font-size: get-font-size($body-font-size, rg);
+        font-weight: get-font-weight($font-weight, medium);
+      }
+    }
+
+    .inline-form {
+      align-items: start;
+      justify-content: space-between;
+      display: flex;
+      width: 100%;
+      gap: 2rem;
+      .item-1 {
+        flex: 1;
+      }
+    }
+  }
+}

@@ -1,7 +1,15 @@
+import PartnerListLayout from "@/components/partner-list/tab/tabLayout/PartnerListLayout";
 import { Link } from "react-router-dom";
 
 // Định nghĩa các route trong ứng dụng
 export const routePath = [
+  {
+    index: false,
+    path: "partner",
+    icon: "far fa-circle",
+    title: "Partner",
+    component: <Partner />,
+  },
   {
     index: false,
     path: "warehouse",
@@ -118,11 +126,15 @@ export const routePath = [
 ];
 
 // Các component sử dụng trong routePath
+function Partner() {
+  return <PartnerListLayout />;
+}
+
 function Warehouse() {
   return (
     <div>
       <h2>Warehouse</h2>
-      <p>Quản lý thông tin kho hàng</p>
+      <p>Chi tiết kho hàng</p>
     </div>
   );
 }

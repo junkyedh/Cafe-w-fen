@@ -21,7 +21,7 @@ export default function Sidebar() {
   const toggleSubRoutes = (path: string) => {
     setOpenSubRoutes((prev) => ({
       ...prev,
-      [path]: !prev[path]
+      [path]: !prev[path],
     }));
   };
 
@@ -65,7 +65,7 @@ export default function Sidebar() {
           </Link>
 
           {hasChildren && isOpen && (
-            <ul className="nav nav-pills flex-column ms-3">
+            <ul className="nav-children nav nav-pills">
               {route.children.map((subRoute, subIndex) => (
                 <li key={subIndex} className="nav-item">
                   <Link
@@ -102,12 +102,10 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 min-vh-100 sidebar">
+    <div className="d-flex flex-column align-items-center align-items-sm-start min-vh-100 sidebar">
       <h1 className="logo">LOGO</h1>
       <h5 className="systems">Systems</h5>
-      <ul className="nav nav-pills flex-column mb-auto w-120">
-        {renderNavigationList()}
-      </ul>
+      <ul className="nav nav-pills">{renderNavigationList()}</ul>
     </div>
   );
 }

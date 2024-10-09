@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ActionButton.scss";
 import Button from "@/components/ui/Button";
 import { Icon } from "@iconify/react";
+import { CreatePartner } from "@/components/form/createPartner/CreatePartner";
 
 const ActionButton = () => {
   const [clickNew, setClickNew] = useState(false);
@@ -73,6 +74,7 @@ const ActionButton = () => {
             Import
           </Button>
         </div>
+        {clickNew && <CreatePartner onclose={handleClickNewButton} />}
         <div
           className={`button-div ${clickExport ? "active" : "inactive"}`}
           onClick={handleClickExportButton}

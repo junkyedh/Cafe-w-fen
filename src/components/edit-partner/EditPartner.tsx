@@ -17,46 +17,30 @@ interface EditPartnerProps {
 }
 
 const EditPartner: React.FC<EditPartnerProps> = ({ data, onClose }) => {
-  const [formData, setFormData] = useState<PartnerData | null>(null);
   const [isClick, setClick] = useState("all");
-  const [isEditing, setIsEditing] = useState(false);
-  const [selectedPartner, setSelectedPartner] = useState<DataWarehouse | null>(
-    null
-  ); // State for the selected partner
 
-  const handleEditClick = (data: DataWarehouse) => {
-    setSelectedPartner(data); // Set the selected partner data
-    setIsEditing(true); // Open the edit modal
-  };
+  const [activeType, setActiveType] = useState<string | null>("supplier");
+  const [name, setName] = useState<string | null | undefined>(data?.name);
+  const [owner, setOwner] = useState<string | null | undefined>(data?.owner);
+  const [location, setLocation] = useState<string | null | undefined>(
+    data?.location
+  );
 
-  const handleCloseEdit = () => {
-    setIsEditing(false); // Close the edit modal
-    setSelectedPartner(null); // Clear the selected partner data
-  };
-  // Populate the form with existing data when the component mounts
+  // Cập nhật giá trị ban đầu khi `data` thay đổi
   useEffect(() => {
     if (data) {
-      setFormData(data);
+      setName(data.name);
+      setOwner(data.owner);
+      setLocation(data.location);
+      setActiveType(data.type); // Thiết lập loại đối tác ban đầu nếu có
     }
-  }, [data]);
+  }, [data]); // Lắng nghe sự thay đổi của `data`
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (formData) {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
-    }
+  const handleClick = (type: string) => {
+    setActiveType(type);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Implement form submission logic here (e.g., update partner info)
-    console.log("Updated Partner Data:", formData);
-    onClose(); // Close the edit form after submission
-  };
-
-  if (!formData) return null; // Render nothing if no data is available
+  const handleEditClick = (data: DataWarehouse) => {};
 
   return (
     <div className="container d-flex flex-row">
@@ -68,53 +52,79 @@ const EditPartner: React.FC<EditPartnerProps> = ({ data, onClose }) => {
         </div>
       </div>
 
-      <div className="rightside col-8 ">
-        <h3 className="title-text">Infomation</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="first-card ">
-            <div className="fisrt-group">
-              <label className="label">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label className="label">Owner</label>
-              <input
-                type="text"
-                name="owner"
-                value={formData.owner}
-                onChange={handleChange}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group item-1">
-              <label className="label">Location</label>
-              <input
-                type="text"
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
-                className="form-control"
-              />
+      <div className="rightside col-8">
+        <div className="header d-flex justify-content-between align-items-center">
+          <h3 className="title-text">Infomation</h3>
+          <div>
+            <div className="btn-close">
+              <button className="btn" onClick={onClose}></button>
             </div>
           </div>
-          <div className="second-card">
-            <div className="form-group item-2">
-              <label className="label">Type</label>
-              <input
-                type="text"
-                name="type"
-                value={formData.type}
-                onChange={handleChange}
-                className="form-control"
-              />
+        </div>
+        <form>
+          <div className="edit-container">
+            <div className="modal-content">
+              <div className="edit-info-box">
+                <div className="edit-name">
+                  <p className="title-edit-name">Name</p>
+                  <input
+                    className="input-name"
+                    value={name || ""} // Kiểm tra giá trị để tránh lỗi undefined
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div className="edit-owner">
+                  <p className="title-edit-owner">Owner</p>
+                  <input
+                    className="input-owner"
+                    value={owner || ""} // Kiểm tra giá trị để tránh lỗi undefined
+                    onChange={(e) => setOwner(e.target.value)}
+                  />
+                </div>
+                <div className="edit-location">
+                  <p className="title-edit-location">Location</p>
+                  <input
+                    className="input-location"
+                    value={location || ""} // Kiểm tra giá trị để tránh lỗi undefined
+                    onChange={(e) => setLocation(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="type-partner-box">
+                <div className="type-partner-container">
+                  <p className="type-title">Type</p>
+                  <div className="select-box">
+                    <div
+                      className={`type-option ${
+                        activeType === "supplier" ? "active" : ""
+                      }`}
+                      onClick={() => handleClick("supplier")}
+                    >
+                      Supplier
+                    </div>
+                    <div
+                      className={`type-option ${
+                        activeType === "warehouse" ? "active" : ""
+                      }`}
+                      onClick={() => handleClick("warehouse")}
+                    >
+                      Warehouse
+                    </div>
+                    <div
+                      className={`type-option ${
+                        activeType === "transport" ? "active" : ""
+                      }`}
+                      onClick={() => handleClick("transport")}
+                    >
+                      Transport Provider
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
           <div className="btn-group">
             <div>
               <button

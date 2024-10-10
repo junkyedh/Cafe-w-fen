@@ -4,6 +4,7 @@ import EditPartner from "@/components/edit-partner/EditPartner";
 import DataTable from "../tabContent/table/DataTable";
 import { DataWarehouse } from "../tabContent/table/DataTable"; // Import DataWarehouse type
 import "./PartnerListLayout.scss";
+import ActionButton from "../tabContent/actionButton/ActionButton";
 
 const PartnerListLayout = () => {
   const [isClick, setClick] = useState("all");
@@ -31,6 +32,8 @@ const PartnerListLayout = () => {
           <p className="title-text">Partner List</p>
           <div className="tab-layout-div">
             <TabButton isClick={isClick} setClick={setClick} />
+            <ActionButton />
+
             {isClick === "all" && <DataTable onEdit={handleEditClick} />}
           </div>
         </div>

@@ -80,8 +80,8 @@ const PaginationContent: React.FC<Props> = ({ items }) => {
   };
 
   return (
-    <div className="pagination-layout">
-      <div className="my-pagination-div">
+    <div className="pagination-edit-layout">
+      <div className="edit-pagination-div">
         <div className="view-div">
           <p className="view-text">View</p>
           <div className="select-quantity">

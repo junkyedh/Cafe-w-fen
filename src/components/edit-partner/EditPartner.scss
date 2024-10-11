@@ -1,0 +1,282 @@
+@import "../../scss/_variables.scss";
+
+.container {
+  align-items: start;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: white;
+
+  .leftside {
+    border-right: 1px solid gray;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    height: 100%;
+
+    .title-text {
+      display: flex;
+      width: fit-content;
+      height: fit-content;
+      font-size: get-font-size($title-font-size, sm);
+      font-weight: get-font-weight($font-weight, semibold);
+      font-family: $font-family;
+      margin: 0;
+    }
+
+    .contentEdit {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+
+      table {
+        width: 100%; // Đảm bảo table chiếm toàn bộ chiều rộng
+        height: 100%; // Đặt table chiếm 100% chiều cao của content
+      }
+    }
+  }
+
+  .rightside {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+      height: 100%;
+      .btn-close {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        border: none;
+        height: 100%;
+        margin-bottom: 1rem;
+      }
+      .btn {
+        border: none;
+        height: fit-content;
+        padding: 1rem;
+      }
+      .title-text {
+        display: flex;
+        width: fit-content;
+        height: fit-content;
+        font-size: get-font-size($body-font-size, lg);
+        font-weight: get-font-weight($font-weight, medium);
+        font-family: $font-family;
+        margin: 0;
+        padding-bottom: 1rem;
+      }
+    }
+
+    .edit-container {
+      padding: 0;
+      .modal-content {
+        background: white;
+        width: 100%;
+        padding-left: 0;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        border-radius: 16px;
+      }
+
+      .edit-info-box {
+        width: 100%;
+        border-radius: 12px;
+        background-color: #d6dfff;
+      }
+
+      .edit-name {
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 12px;
+      }
+
+      .title-edit-name {
+        font-family: $font-family;
+        font-weight: get-font-weight($font-weight, medium);
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .input-name {
+        font-family: $font-family;
+        font-weight: get-font-weight($font-weight, regular);
+        font-size: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
+        // padding-top: 8px;
+        // padding-bottom: 8px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        border-color: transparent;
+        width: 100%;
+        height: 40px;
+      }
+
+      .edit-owner {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 12px;
+      }
+
+      .title-edit-owner {
+        font-family: $font-family;
+        font-weight: get-font-weight($font-weight, medium);
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .input-owner {
+        font-family: $font-family;
+        font-weight: get-font-weight($font-weight, regular);
+        font-size: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
+        // padding-top: 8px;
+        // padding-bottom: 8px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        border-color: transparent;
+        width: 100%;
+        height: 40px;
+      }
+
+      .edit-location {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 12px;
+      }
+
+      .title-edit-location {
+        font-family: $font-family;
+        font-weight: get-font-weight($font-weight, medium);
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .input-location {
+        font-family: $font-family;
+        font-weight: get-font-weight($font-weight, regular);
+        font-size: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
+        // padding-top: 8px;
+        // padding-bottom: 8px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        border-color: transparent;
+        width: 100%;
+        height: 40px;
+      }
+
+      .type-partner-box {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        width: 100%;
+        height: 110px;
+        border-radius: 12px;
+        background-color: #d6dfff;
+      }
+
+      .type-partner-container {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 12px;
+      }
+
+      .type-title {
+        font-family: $font-family;
+        font-weight: get-font-weight($font-weight, medium);
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .select-box {
+        display: flex;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 4px;
+        border-radius: 8px;
+      }
+
+      .type-option {
+        font-family: $font-family;
+        font-weight: get-font-weight($font-weight, regular);
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 33%;
+        height: 32px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .type-option.active {
+        background-color: #3461ff;
+        color: white;
+      }
+
+      .type-option:not(.active):hover {
+        background-color: #f0f0f0;
+      }
+    }
+
+    .form-group {
+      padding-top: 10px;
+    }
+
+    .label {
+      font-size: get-font-size($body-font-size, rg);
+      font-weight: get-font-weight($font-weight, medium);
+      padding-bottom: 2px;
+    }
+
+    .btn-group {
+      align-items: start;
+      justify-content: end;
+      display: flex;
+      width: 100%;
+      margin-top: 1rem;
+      gap: 1rem;
+
+      .btn {
+        width: fit-content;
+        border-radius: 16px;
+      }
+
+      .btn-second {
+        border: 1px solid get-color($primary, "500");
+        color: get-color($primary, "500");
+        font-size: get-font-size($body-font-size, rg);
+        font-weight: get-font-weight($font-weight, medium);
+      }
+
+      .btn-pri {
+        border: 1px solid get-color($primary, "500");
+        background: get-color($primary, "500");
+        color: white;
+        font-size: get-font-size($body-font-size, rg);
+        font-weight: get-font-weight($font-weight, medium);
+      }
+    }
+
+    .inline-form {
+      align-items: start;
+      justify-content: space-between;
+      display: flex;
+      width: 100%;
+      gap: 2rem;
+      .item-1 {
+        flex: 1;
+      }
+    }
+  }
+}

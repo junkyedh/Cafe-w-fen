@@ -7,7 +7,7 @@ const TabContent = () => {
   return (
     <div className="tab-content-div">
       <ActionButton />
-      <DataTable />
+      {/* <DataTable /> */}
     </div>
   );
 };

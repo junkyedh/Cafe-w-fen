@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import "./DataTable.scss";
-import { Icon } from "@iconify/react";
-import ButtonActionDelete from "./ButtonActionDelete";
-import ButtonActionEdit from "./ButtonActionEdit";
-import PaginationContent from "@/components/partner-list/pagination/PaginationContent";
-import EditPartner from "@/components/edit-partner/EditPartner";
+import PaginationContent from "../pagination/PaginationContent";
 
 export interface DataWarehouse {
   id: string;
@@ -125,9 +121,6 @@ const DataTable = ({ onEdit }: { onEdit: (data: DataWarehouse) => void }) => {
           <tr>
             <th>Name</th>
             <th>Owner</th>
-            <th>Location</th>
-            <th>Type</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -135,22 +128,6 @@ const DataTable = ({ onEdit }: { onEdit: (data: DataWarehouse) => void }) => {
             <tr key={item.id}>
               <td>{item.name}</td>
               <td>{item.owner}</td>
-              <td>{item.location}</td>
-              <td>{item.type}</td>
-              <td>
-                <div className="d-flex flex-md-row flex-column action-button">
-                  <ButtonActionEdit
-                    setEditPage={() => {
-                      onEdit(item); // Pass the selected item data to the onEdit function
-                    }}
-                  />
-                  <ButtonActionDelete
-                    setData={setData}
-                    data={data}
-                    idItemDelete={item.id}
-                  />
-                </div>
-              </td>
             </tr>
           ))}
         </tbody>

@@ -95,7 +95,7 @@ const PaginationContent: React.FC<Props> = ({ items }) => {
           </div>
           <p className="view-text">item per page</p>
         </div>
-        <div className="pagination-div">
+        {/* <div className="pagination-div">
           <Pagination>
             {totalPages > 3 && (
               <Pagination.Prev
@@ -119,7 +119,7 @@ const PaginationContent: React.FC<Props> = ({ items }) => {
               </Pagination.Next>
             )}
           </Pagination>
-        </div>
+        </div> */}
       </div>
     </div>
   );

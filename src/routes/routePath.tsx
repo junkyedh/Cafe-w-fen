@@ -1,5 +1,7 @@
 import PartnerListLayout from "@/components/partner-list/tab/tabLayout/PartnerListLayout";
-import ProductListLayout from "@/components/product-list/tab/tabLayout/ProductListLayout";
+
+import ProductListLayout from "@/components/product-list/tabLayout/ProductListLayout";
+
 import { Link } from "react-router-dom";
 
 // Định nghĩa các route trong ứng dụng
@@ -150,7 +152,9 @@ function MyWarehouse() {
 }
 
 function ProductManagement() {
-  return <ProductListLayout />;
+  return (
+    <ProductListLayout />
+  );
 }
 
 function DailyReport() {

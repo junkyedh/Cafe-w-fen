@@ -3,31 +3,26 @@ import "./ActionButton.scss";
 import Button from "@/components/ui/Button";
 import { Icon } from "@iconify/react";
 
-const ActionButton = () => {
+interface ActionButtonProps {
+  onNewClick: () => void;
+  onImportClick: () => void;
+  onExportClick: () => void;
+}
+
+const ActionButton: React.FC<ActionButtonProps> = ({
+  onNewClick,
+  onImportClick,
+  onExportClick,
+}) => {
   const [clickNew, setClickNew] = useState(false);
   const [clickImport, setClickImport] = useState(false);
   const [clickExport, setClickExport] = useState(false);
-
-  const handleClickNewButton = () => {
-    setClickNew(!clickNew);
-    console.log("New button clicked");
-  };
-
-  const handleClickImportButton = () => {
-    setClickImport(!clickImport);
-    console.log("Import button clicked");
-  };
-
-  const handleClickExportButton = () => {
-    setClickExport(!clickExport);
-    console.log("Export button clicked");
-  };
 
   return (
     <div className="my-action-button">
       <div
         className={`new-button-div ${clickNew ? "active" : "inactive"}`}
-        onClick={handleClickNewButton}
+        onClick={onNewClick}
       >
         <Button
           variant="primary"
@@ -53,7 +48,7 @@ const ActionButton = () => {
       <div className="imp-exp-button-div">
         <div
           className={`button-div ${clickImport ? "active" : "inactive"}`}
-          onClick={handleClickImportButton}
+          onClick={onImportClick}
         >
           <Button
             variant="primary"
@@ -77,7 +72,7 @@ const ActionButton = () => {
 
         <div
           className={`button-div ${clickExport ? "active" : "inactive"}`}
-          onClick={handleClickExportButton}
+          onClick={onExportClick}
         >
           <Button
             variant="primary"

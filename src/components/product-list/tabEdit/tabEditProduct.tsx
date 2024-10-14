@@ -1,13 +1,24 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./tabEditProduct.scss";
 import Button from "@/components/ui/Button";
 import { Icon } from "@iconify/react";
+import { DataProduct } from "../tabContent/table/DataTable";
 
-const TabEditProduct = () => {
+interface TabEditProducProps {
+  isOpen: boolean;
+  onClose: () => void;
+  dataProduct: DataProduct | null;
+}
+
+const TabEditProduct: React.FC<TabEditProducProps> = ({
+  isOpen,
+  onClose,
+  dataProduct,
+}) => {
   const [clickNew, setClickNew] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
-  const [isOpen, setIsOpen] = useState(true);
+  // const [isOpen, setIsOpen] = useState(true);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -18,10 +29,6 @@ const TabEditProduct = () => {
 
   const handleClickEdit = () => {
     setIsEdit(true);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
   };
 
   return (
@@ -57,7 +64,7 @@ const TabEditProduct = () => {
                 </button>
               </div>
             )}
-            <button onClick={handleClose} className="close-button">
+            <button onClick={onClose} className="close-button">
               &times;
             </button>
           </div>
@@ -70,7 +77,7 @@ const TabEditProduct = () => {
               <input
                 type="text"
                 readOnly={!isEdit}
-                value={name}
+                value={dataProduct?.name ?? ""}
                 onChange={(e) => setName(e.target.value)}
                 required
               />
@@ -93,7 +100,7 @@ const TabEditProduct = () => {
               <input
                 type="text"
                 readOnly={!isEdit}
-                value={supplier}
+                value={dataProduct?.nameSupplier ?? ""}
                 onChange={(e) => setSupplier(e.target.value)}
               />
             </label>
@@ -110,7 +117,7 @@ const TabEditProduct = () => {
                 <input
                   type="text"
                   readOnly={!isEdit}
-                  value={size}
+                  value={dataProduct?.size ?? ""}
                   onChange={(e) => setSize(e.target.value)}
                 />
               </label>
@@ -119,7 +126,7 @@ const TabEditProduct = () => {
                 <input
                   type="number"
                   readOnly={!isEdit}
-                  value={weight}
+                  value={dataProduct?.weight ?? ""}
                   onChange={(e) => setWeight(e.target.value)}
                   step="0.01"
                 />
@@ -129,7 +136,9 @@ const TabEditProduct = () => {
 
           {isEdit && (
             <div className="dialog-actions">
-              <button type="button">Cancel</button>
+              <button type="button" onClick={onClose}>
+                Cancel
+              </button>
               <button type="button" className="button-save">
                 Save
               </button>

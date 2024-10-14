@@ -17,6 +17,11 @@ export interface DataProduct {
   weight: number;
 }
 
+interface DataTableProps {
+  onRowClick: (item: DataProduct) => void;
+  onClickEdit: (item: DataProduct) => void;
+}
+
 export const initialDataProduct: DataProduct[] = [
   {
     id: "1",
@@ -89,10 +94,10 @@ export const initialDataProduct: DataProduct[] = [
     type: "Electronics",
     size: "Medium",
     weight: 3,
-  }
+  },
 ];
 
-const DataTable = () => {
+const DataTable: React.FC<DataTableProps> = ({ onRowClick, onClickEdit }) => {
   const [data, setData] = useState<DataProduct[]>(initialDataProduct);
 
   const [quantity, setQuantity] = useState(7);
@@ -125,7 +130,7 @@ const DataTable = () => {
         </thead>
         <tbody>
           {currentData.map((item) => (
-            <tr key={item.id}>
+            <tr key={item.id} onClick={() => onRowClick(item)}>
               <td>{item.name}</td>
               <td>{formatCurrencyVND(item.price)}</td>
               <td>{item.nameSupplier}</td>
@@ -136,7 +141,7 @@ const DataTable = () => {
                 <div className="d-flex flex-md-row flex-column action-button">
                   <ButtonActionEdit
                     setEditPage={() => {
-                      
+                      onClickEdit(item);
                     }}
                   />
                   <ButtonActionDelete

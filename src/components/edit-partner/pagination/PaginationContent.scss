@@ -1,6 +1,6 @@
 @import "../../../scss/variables";
 
-.pagination-layout {
+.pagination-edit-layout {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -12,10 +12,11 @@
   margin-top: 92px;
 }
 
-.my-pagination-div {
+.edit-pagination-div {
   display: flex;
   flex-direction: row;
-  width: 65%;
+  // width: 65%;
+  width: 100%;
   height: auto;
   align-items: center;
   justify-content: end;

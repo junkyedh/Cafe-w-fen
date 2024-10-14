@@ -14,6 +14,16 @@
     padding-top: 1rem;
     height: 100%;
 
+    .tab-layout-div {
+      display: flex;
+      width: 100%;
+      height: fit-content;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: 1rem;
+    }
+
     .title-text {
       display: flex;
       width: fit-content;

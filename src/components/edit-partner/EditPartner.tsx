@@ -2,6 +2,9 @@ import "./EditPartner.scss";
 import React, { useState, useEffect } from "react";
 import TabButton from "./tab-button/TabButton";
 import DataTable, { DataWarehouse } from "./partner-list/DataTable";
+import { Icon } from "@iconify/react";
+import Button from "@/components/ui/Button";
+import { CreatePartner } from "../form/createPartner/CreatePartner";
 
 interface PartnerData {
   id: string;
@@ -15,6 +18,45 @@ interface EditPartnerProps {
   data: PartnerData | null | undefined; // Allow undefined
   onClose: () => void; // Function to handle closing the edit form
 }
+
+const ActionButton = () => {
+  const [clickNew, setClickNew] = useState(false);
+  const handleClickNewButton = () => {
+    setClickNew(!clickNew);
+    console.log("New button is clicked");
+  };
+
+  return (
+    <div className="my-action-button">
+      <div
+        className={`new-button-div ${clickNew ? "active" : "inactive"}`}
+        onClick={handleClickNewButton}
+      >
+        <Button
+          variant="primary"
+          size="small"
+          rounded="none"
+          backgroundColor="transparent"
+          textColor="white"
+          padding="10px 16px"
+          width="fit"
+          type="button"
+          disabled={false}
+        >
+          <Icon
+            icon="ic:round-plus"
+            width={20}
+            height={20}
+            style={{ color: "white" }}
+            className="icon-custom"
+          />
+          New
+        </Button>
+      </div>
+      {clickNew && <CreatePartner onclose={handleClickNewButton} />}
+    </div>
+  );
+};
 
 const EditPartner: React.FC<EditPartnerProps> = ({ data, onClose }) => {
   const [isClick, setClick] = useState("all");
@@ -48,6 +90,7 @@ const EditPartner: React.FC<EditPartnerProps> = ({ data, onClose }) => {
         <p className="title-text">Partner List</p>
         <div className="tab-layout-div">
           <TabButton isClick={isClick} setClick={setClick} />
+          <ActionButton />
           {isClick === "all" && <DataTable onEdit={handleEditClick} />}
         </div>
       </div>

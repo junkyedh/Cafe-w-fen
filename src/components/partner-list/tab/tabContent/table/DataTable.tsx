@@ -86,16 +86,16 @@ export const initialDataWarehouse: DataWarehouse[] = [
   },
   {
     id: "11",
-    name: "Nha xe X",
-    owner: "Le Minh Ba",
-    location: "Ward 3, HCM City",
+    name: "Kho 3",
+    owner: "Nguyen Van B",
+    location: "Di An City, Binh Duong Province",
     type: "150.000 USD"
   },
   {
     id: "12",
-    name: "Van tai S",
-    owner: "Ly Thi Bay",
-    location: "Ward 7, HCM City",
+    name: "Xe CD",
+    owner: "La Van Mot",
+    location: "Ward 1, HCM City",
     type: "150.000 USD"
   }
 ];
@@ -117,6 +117,16 @@ const DataTable = () => {
     totalPages,
     setQuantity,
     quantity
+  };
+
+  const handleDeleteClick = (item: DataWarehouse) => {
+    setSelectedItem(item); // Lưu trữ item được chọn để xóa
+    setIsOverlayOpen(true); // Mở overlay
+  };
+
+  const closeOverlay = () => {
+    setIsOverlayOpen(false);
+    setSelectedItem(null); // Xóa item sau khi đóng overlay
   };
 
   return (

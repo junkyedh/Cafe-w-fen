@@ -190,9 +190,11 @@
     }
   }
 
-  .prev.page-item {
+  .prev.page-item,
+  .next.page-item {
     padding: 0;
     margin: 0;
+
     &:hover {
       cursor: pointer;
       background-color: transparent;
@@ -200,13 +202,9 @@
     }
   }
 
-  .next.page-item {
-    padding: 0;
-    margin: 0;
-    &:hover {
-      cursor: pointer;
-      background-color: transparent;
-      text-decoration: none;
-    }
+  .prev.page-item.disabled,
+  .next.page-item.disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 }

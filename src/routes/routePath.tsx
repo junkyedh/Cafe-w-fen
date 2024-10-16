@@ -1,5 +1,5 @@
 import PartnerListLayout from "@/components/partner-list/tab/tabLayout/PartnerListLayout";
-
+import WareHouseListLayout from "@/components/warehouse-list/tab/tabLayout/WarehouseListLayout";
 import ProductListLayout from "@/components/product-list/tabLayout/ProductListLayout";
 
 import { Link } from "react-router-dom";
@@ -134,12 +134,7 @@ function Partner() {
 }
 
 function Warehouse() {
-  return (
-    <div>
-      <h2>Warehouse</h2>
-      <p>Chi tiết kho hàng</p>
-    </div>
-  );
+  return <WareHouseListLayout />
 }
 
 function MyWarehouse() {

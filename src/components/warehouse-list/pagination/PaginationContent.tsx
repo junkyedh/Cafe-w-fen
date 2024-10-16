@@ -21,7 +21,7 @@ const PaginationContent: React.FC<Props> = ({ items }) => {
   const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const num = parseInt(event.target.value, 10);
     setQuantity(num);
-    setCurrentPage(1); // Reset trang về 1 khi thay đổi số lượng
+    setCurrentPage(1);
   };
 
   const onPageChange = (pageNumber: number) => {
@@ -97,27 +97,27 @@ const PaginationContent: React.FC<Props> = ({ items }) => {
         </div>
         <div className="pagination-div">
           <Pagination>
-            <Pagination.Prev
-              className={`prev page-item ${
-                currentPage === 1 ? "disabled" : ""
-              }`}
-              onClick={() => onPageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              {"<"}
-            </Pagination.Prev>
+            {totalPages > 3 && (
+              <Pagination.Prev
+                className="prev"
+                onClick={() => onPageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                {"<"}
+              </Pagination.Prev>
+            )}
 
             {renderPaginationItems()}
 
-            <Pagination.Next
-              className={`next page-item ${
-                currentPage === totalPages ? "disabled" : ""
-              }`}
-              onClick={() => onPageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            >
-              {">"}
-            </Pagination.Next>
+            {totalPages > 3 && (
+              <Pagination.Next
+                className="next"
+                onClick={() => onPageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                {">"}
+              </Pagination.Next>
+            )}
           </Pagination>
         </div>
       </div>

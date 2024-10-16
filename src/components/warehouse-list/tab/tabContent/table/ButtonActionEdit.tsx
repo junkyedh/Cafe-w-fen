@@ -6,14 +6,21 @@ interface EditButtonProps {
   setEditPage: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ButtonActionEdit: React.FC<EditButtonProps> = ({ setEditPage }) => {
+const ButtonActionEdit = ({ setEditPage }: EditButtonProps) => {
   const handleOpenEditPage = () => {
     setEditPage(true);
     console.log("Edit page is opened");
   };
 
+  const editButtonStyle: React.CSSProperties = {
+    display: "flex",
+    width: "auto",
+    height: "auto",
+    zIndex: 10,
+    cursor: "pointer"
+  };
   return (
-    <div style={{ display: "flex", zIndex: 10, cursor: "pointer" }} onClick={handleOpenEditPage}>
+    <div style={editButtonStyle} onClick={handleOpenEditPage}>
       <Button
         variant="primary"
         size="medium"

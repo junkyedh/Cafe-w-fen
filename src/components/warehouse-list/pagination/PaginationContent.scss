@@ -1,25 +1,22 @@
 @import "../../../scss/variables";
 
-.pagination-edit-layout {
+.pagination-layout {
   display: flex;
   flex-direction: row;
   width: 100%;
   height: auto;
-  justify-content: end;
-  padding-right: 1rem;
-  padding-bottom: 10px;
+  justify-content: center;
   align-items: center;
   margin-top: 92px;
 }
 
-.edit-pagination-div {
+.my-pagination-div {
   display: flex;
   flex-direction: row;
-  // width: 65%;
-  width: 100%;
+  width: 65%;
   height: auto;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
 
   @media (max-width: 962px) {
     flex-direction: column;
@@ -33,7 +30,7 @@
   width: auto;
   height: auto;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
   gap: 8.5px;
 }
 
@@ -43,7 +40,6 @@
   font-weight: normal;
   margin: 0;
   font-family: $font-family;
-  white-space: nowrap;
 
   @media (max-width: 962px) {
     font-size: 10px;

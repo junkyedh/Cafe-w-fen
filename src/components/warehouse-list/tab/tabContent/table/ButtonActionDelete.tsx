@@ -1,25 +1,33 @@
 import Button from "@/components/ui/Button";
 import { Icon } from "@iconify/react";
 import React from "react";
-import { DataProduct } from "./DataTable";
+import { DataWarehouse } from "./DataTable";
 
 interface DeleteButtonProps {
-  setData: React.Dispatch<React.SetStateAction<DataProduct[]>>;
-  data: DataProduct[];
+  setData: React.Dispatch<React.SetStateAction<DataWarehouse[]>>;
+  data: DataWarehouse[];
   idItemDelete: string;
 }
 
-const ButtonActionDelete: React.FC<DeleteButtonProps> = ({
+const ButtonActionDelete = ({
   setData,
   data,
-  idItemDelete,
-}) => {
+  idItemDelete
+}: DeleteButtonProps) => {
   const handleDelete = () => {
     setData(data.filter((item) => item.id !== idItemDelete));
   };
 
+  const deleteButtonStyle: React.CSSProperties = {
+    display: "flex",
+    width: "auto",
+    height: "auto",
+    zIndex: 10,
+    cursor: "pointer"
+  };
+
   return (
-    <div style={{ display: "flex", zIndex: 10, cursor: "pointer" }} onClick={handleDelete}>
+    <div style={deleteButtonStyle} onClick={handleDelete}>
       <Button
         variant="primary"
         size="medium"
@@ -28,6 +36,7 @@ const ButtonActionDelete: React.FC<DeleteButtonProps> = ({
         padding="0"
         type="button"
         disabled={false}
+        onClick={handleDelete}
       >
         <Icon
           icon="lucide:trash-2"

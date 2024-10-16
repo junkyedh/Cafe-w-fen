@@ -44,7 +44,7 @@ const PaginationContent: React.FC<Props> = ({ items }) => {
               currentPage + 1,
               currentPage + 2,
               "...",
-              totalPages,
+              totalPages
             ];
             edgePage += 3;
           }
@@ -54,7 +54,7 @@ const PaginationContent: React.FC<Props> = ({ items }) => {
             totalPages - 3,
             totalPages - 2,
             totalPages - 1,
-            totalPages,
+            totalPages
           ];
         }
       } else {
@@ -97,27 +97,27 @@ const PaginationContent: React.FC<Props> = ({ items }) => {
         </div>
         <div className="pagination-div">
           <Pagination>
-            {totalPages > 3 && (
-              <Pagination.Prev
-                className="prev"
-                onClick={() => onPageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-              >
-                {"<"}
-              </Pagination.Prev>
-            )}
+            <Pagination.Prev
+              className={`prev page-item ${
+                currentPage === 1 ? "disabled" : ""
+              }`}
+              onClick={() => onPageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              {"<"}
+            </Pagination.Prev>
 
             {renderPaginationItems()}
 
-            {totalPages > 3 && (
-              <Pagination.Next
-                className="next"
-                onClick={() => onPageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-              >
-                {">"}
-              </Pagination.Next>
-            )}
+            <Pagination.Next
+              className={`next page-item ${
+                currentPage === totalPages ? "disabled" : ""
+              }`}
+              onClick={() => onPageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              {">"}
+            </Pagination.Next>
           </Pagination>
         </div>
       </div>

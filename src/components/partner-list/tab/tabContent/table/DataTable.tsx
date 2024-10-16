@@ -22,85 +22,85 @@ export const initialDataWarehouse: DataWarehouse[] = [
     name: "Kho 1",
     owner: "Nguyen Van A",
     location: "Thu Duc City, HCM City",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "2",
     name: "Kho 2",
     owner: "Nguyen Van A",
     location: "Ward 6, HCM City",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "3",
     name: "Kho 3",
     owner: "Nguyen Van B",
     location: "Di An City, Binh Duong Province",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "4",
     name: "Xe CD",
     owner: "La Van Mot",
     location: "Ward 1, HCM City",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "5",
     name: "Nha xe X",
     owner: "Le Minh Ba",
     location: "Ward 3, HCM City",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "6",
     name: "Van tai S",
     owner: "Ly Thi Bay",
     location: "Ward 7, HCM City",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "7",
     name: "Kho 1",
     owner: "Nguyen Van A",
     location: "Thu Duc City, HCM City",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "8",
     name: "Kho 2",
     owner: "Nguyen Van A",
     location: "Ward 6, HCM City",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "9",
     name: "Kho 3",
     owner: "Nguyen Van B",
     location: "Di An City, Binh Duong Province",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "10",
     name: "Xe CD",
     owner: "La Van Mot",
     location: "Ward 1, HCM City",
-    type: "150.000 USD",
+    type: "150.000 USD"
   },
   {
     id: "11",
-    name: "Nha xe X",
-    owner: "Le Minh Ba",
-    location: "Ward 3, HCM City",
-    type: "150.000 USD",
+    name: "Kho 3",
+    owner: "Nguyen Van B",
+    location: "Di An City, Binh Duong Province",
+    type: "150.000 USD"
   },
   {
     id: "12",
-    name: "Van tai S",
-    owner: "Ly Thi Bay",
-    location: "Ward 7, HCM City",
-    type: "150.000 USD",
-  },
+    name: "Xe CD",
+    owner: "La Van Mot",
+    location: "Ward 1, HCM City",
+    type: "150.000 USD"
+  }
 ];
 const DataTable = ({ onEdit }: { onEdit: (data: DataWarehouse) => void }) => {
   const [data, setData] = useState<DataWarehouse[]>(initialDataWarehouse);
@@ -118,7 +118,7 @@ const DataTable = ({ onEdit }: { onEdit: (data: DataWarehouse) => void }) => {
     setCurrentPage,
     totalPages,
     setQuantity,
-    quantity,
+    quantity
   };
 
   const handleDeleteClick = (item: DataWarehouse) => {

@@ -119,16 +119,6 @@ const DataTable = () => {
     quantity
   };
 
-  const handleDeleteClick = (item: DataWarehouse) => {
-    setSelectedItem(item); // Lưu trữ item được chọn để xóa
-    setIsOverlayOpen(true); // Mở overlay
-  };
-
-  const closeOverlay = () => {
-    setIsOverlayOpen(false);
-    setSelectedItem(null); // Xóa item sau khi đóng overlay
-  };
-
   return (
     <div className="table-div">
       <table>

@@ -1,6 +1,6 @@
 import PartnerListLayout from "@/components/partner-list/tab/tabLayout/PartnerListLayout";
 import WareHouseListLayout from "@/components/warehouse-list/tab/tabLayout/WarehouseListLayout";
-import ProductListLayout from "@/components/product-list/tabLayout/ProductListLayout";
+// import ProductListLayout from "@/components/product-list/tabLayout/ProductListLayout";
 
 import { Link } from "react-router-dom";
 
@@ -148,7 +148,8 @@ function MyWarehouse() {
 
 function ProductManagement() {
   return (
-    <ProductListLayout />
+    // <ProductListLayout />
+    <></>
   );
 }
 

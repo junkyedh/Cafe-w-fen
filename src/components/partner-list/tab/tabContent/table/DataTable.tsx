@@ -4,9 +4,6 @@ import { Icon } from "@iconify/react";
 import ButtonActionDelete from "./ButtonActionDelete";
 import ButtonActionEdit from "./ButtonActionEdit";
 import PaginationContent from "@/components/partner-list/pagination/PaginationContent";
-import EditPartner from "@/components/edit-partner/EditPartner";
-import ModalOverlay from "@/components/ui/ModalOverlay";
-import DeletePartner from "@/components/delete-partner/DeletePartner";
 
 export interface DataWarehouse {
   id: string;
@@ -102,11 +99,12 @@ export const initialDataWarehouse: DataWarehouse[] = [
     type: "150.000 USD"
   }
 ];
-const DataTable = ({ onEdit }: { onEdit: (data: DataWarehouse) => void }) => {
+
+const DataTable = () => {
   const [data, setData] = useState<DataWarehouse[]>(initialDataWarehouse);
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<DataWarehouse | null>(null);
-  // Pagination
+  const [editPage, setEditPage] = useState(false);
+
+  //Pagination
   const [quantity, setQuantity] = useState(7);
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(initialDataWarehouse.length / quantity);
@@ -152,18 +150,12 @@ const DataTable = ({ onEdit }: { onEdit: (data: DataWarehouse) => void }) => {
               <td>{item.type}</td>
               <td>
                 <div className="d-flex flex-md-row flex-column action-button">
-                  <ButtonActionEdit
-                    setEditPage={() => {
-                      onEdit(item); // Pass the selected item data to the onEdit function
-                    }}
+                  <ButtonActionEdit setEditPage={setEditPage} />
+                  <ButtonActionDelete
+                    setData={setData}
+                    data={data}
+                    idItemDelete={item.id}
                   />
-                  <div onClick={() => handleDeleteClick(item)}>
-                    <ButtonActionDelete
-                      setData={setData}
-                      data={data}
-                      idItemDelete={item.id}
-                    />
-                  </div>
                 </div>
               </td>
             </tr>
@@ -172,11 +164,8 @@ const DataTable = ({ onEdit }: { onEdit: (data: DataWarehouse) => void }) => {
       </table>
 
       <PaginationContent items={items} />
-
-      <ModalOverlay isOpen={isOverlayOpen} onClose={closeOverlay}>
-        <DeletePartner item={selectedItem} onClose={closeOverlay} />
-      </ModalOverlay>
     </div>
   );
 };
+
 export default DataTable;

@@ -4,21 +4,21 @@ $primary: (
   "200": #aec0ff,
   "300": #85a0ff,
   "400": #5d81ff,
-  "500": #3461ff,
+  "500": #3461ff
 );
 $dark: (
   "100": #bcbaba,
   "200": #949292,
   "300": #6c6b6b,
   "400": #444343,
-  "500": #1c1c1c,
+  "500": #1c1c1c
 );
 $secondary: (
   "100": #e1e4eb,
   "200": #c2c9d6,
   "300": #a4afc2,
   "400": #8594ad,
-  "500": #677999,
+  "500": #677999
 );
 $white: #fafafa;
 $green: #12b76a;
@@ -32,7 +32,7 @@ $theme-colors: (
   "light": $white,
   "success": $green,
   "danger": $red,
-  "warning": $orange,
+  "warning": $orange
 );
 
 //Function to get color value from color map
@@ -50,7 +50,7 @@ $font-family: Poppins;
 $title-font-size: (
   "lg": 40px,
   "md": 32px,
-  "sm": 28px,
+  "sm": 28px
 );
 
 //body font size
@@ -58,7 +58,7 @@ $body-font-size: (
   "lg": 24px,
   "md": 20px,
   "rg": 16px,
-  "sm": 12px,
+  "sm": 12px
 );
 
 //font weight
@@ -67,7 +67,7 @@ $font-weight: (
   "semibold": 600,
   "medium": 500,
   "regular": 400,
-  "light": 300,
+  "light": 300
 );
 
 //Function to get font size value from font size map

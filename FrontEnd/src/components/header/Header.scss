@@ -1,0 +1,23 @@
+@import "../../scss/variables";
+
+.header-custom {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  width: 100%;
+  padding: 20px 32px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #bcbaba;
+
+  h1 {
+    margin: 0; 
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 4px 0 0; 
+    font-size: 14px;
+    color: #666;
+  }
+}

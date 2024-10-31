@@ -1,5 +1,5 @@
 
-import path from "path";
+import CustomerListLayout from "@/components/layout/customer-list-layout/CustomerListLayout";
 import { Link, Route } from "react-router-dom";
 
 
@@ -148,9 +148,7 @@ function BookingTable() {
 
 function MyCustomers() {
   return (
-    <div>
-      
-    </div>
+    <CustomerListLayout/>
   );
 }
 

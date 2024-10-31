@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import { ButtonProps } from "@/types/Button.type";
+import "../../scss/_variables.scss";
 
 const borderRadiusMap: Record<string, string> = {
   none: "0",

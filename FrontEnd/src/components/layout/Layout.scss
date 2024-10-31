@@ -1,10 +1,11 @@
+@import "../../scss/variables";
 :root {
   --sidebar-width: 282px;
 }
 
 .sidebar {
   width: var(--sidebar-width);
-  background-color:  #f0F4F8;
+  background-color: get-color($background, "100");
   z-index: 100;
   padding: 18px 0px 0 23px;
 }
@@ -18,9 +19,7 @@
 
 .content {
   width: calc(100% - var(--sidebar-width) - 40px);
-  border-left: 1px solid #bcbaba; /* Đường viền bên trái */
   flex-grow: 1;
-  border-radius: 70px 0 0 70px;
   padding: 0;
   height: 100%;
   color: #2f4156;

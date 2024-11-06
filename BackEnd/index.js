@@ -3,6 +3,11 @@ const app = express();
 const dotenv = require("dotenv").config();
 const cors = require("cors");
 const { Pool } = require("pg");
+const swaggerUi = require("swagger-ui-express");
+const fs = require("fs");
+const YAML = require("yaml");
+const file  = fs.readFileSync("./api-docs.yaml", "utf8");
+const swaggerDocument = YAML.parse(file);
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +25,8 @@ const pool = new Pool({
         rejectUnauthorized: false
     }
 })
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/", async (req, res) =>{
     const client = await pool.connect();

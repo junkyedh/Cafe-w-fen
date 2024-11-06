@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./DataTable.scss";
 import PaginationContent from "@/components/pagination/PaginationContent";
-import { EditCustomer } from "@/components/form/Edit/Customer/edit-customer";
 import ActionButton from "../actionButton/ActionButton";
 
 export interface DataCustomer {
@@ -163,20 +162,18 @@ const DataTable: React.FC<DataTableProps> = ({ onSelectCustomer }) => {
   const [data, setData] = useState<DataCustomer[]>(initialDataCustomer);
   const [selectedRowId, setSelectedRowId] = useState<string | null>(null); // Trạng thái lưu ID của hàng được chọn
 
-  // Khi chọn hàng, chỉ lưu đối tượng, chưa hiển thị hộp thoại
-  const handleRowClick = (customer: DataCustomer) => {
-    setSelectedRowId(customer.id); // Cập nhật ID của hàng được chọn
-    onSelectCustomer(customer); // Gọi hàm callback để gửi đối tượng khách hàng
-  };
 
-  // const handleSave = (updatedCustomer: DataCustomer) => {
-  //   setData((prevData) =>
-  //     prevData.map((customer) =>
-  //       customer.id === updatedCustomer.id ? updatedCustomer : customer
-  //     )
-  //   );
-  //   onSelectCustomer(null);
-  // };
+ // Handle selection for a single row
+  const handleRowSelect = (id: string) => {
+    const newSelectedId = selectedRowId === id ? null : id;
+    setSelectedRowId(newSelectedId);
+
+    // Lấy thông tin của khách hàng đã chọn
+    const selectedCustomer = data.find((customer) => customer.id === newSelectedId) || null;
+    if (selectedCustomer) {
+      onSelectCustomer(selectedCustomer); // Gửi khách hàng đã chọn lên ActionButton
+    }
+  };
 
   //Pagination
   const [quantity, setQuantity] = useState(9);
@@ -198,6 +195,7 @@ const DataTable: React.FC<DataTableProps> = ({ onSelectCustomer }) => {
       <table>
         <thead>
           <tr>
+            <th></th>
             <th>ID</th>
             <th>NAME</th>
             <th>PHONE NUMBER</th>
@@ -210,8 +208,16 @@ const DataTable: React.FC<DataTableProps> = ({ onSelectCustomer }) => {
             <tr
               key={item.id}
               className={selectedRowId === item.id ? "selected" : ""}
-              onClick={() => handleRowClick(item)}
+              onClick={() => handleRowSelect(item.id)} 
             >
+              <td>
+                <input
+                  type="checkbox"
+                  checked={selectedRowId === item.id}
+                  onChange={() => handleRowSelect(item.id)}
+                  onClick={(e) => e.stopPropagation()} // Prevent row click event when clicking the checkbox
+              />
+              </td>
               <td>{item.id}</td>
               <td>{item.name}</td>
               <td>{item.phone}</td>

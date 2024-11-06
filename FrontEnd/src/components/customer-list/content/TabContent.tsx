@@ -57,16 +57,8 @@ const TabContent = () => {
       />
 
       {/* DataTable cho phép chọn khách hàng */}
-      <DataTable onSelectCustomer={handleSelectCustomer} />
+      <DataTable onSelectCustomer={handleSelectCustomer}/>
 
-      {/* Hiển thị EditCustomer khi cần */}
-      {isEditVisible && selectedCustomer && (
-        <EditCustomer
-          customer={selectedCustomer}
-          onSave={handleSaveCustomer}
-          onClose={() => setEditVisible(false)}
-        />
-      )}
     </div>
   );
 };

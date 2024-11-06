@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ActionButton.scss";
 import Button from "@/components/ui/Button";
 import { Icon } from "@iconify/react";
@@ -20,6 +20,14 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
   const [clickEdit, setClickEdit] = useState(false);
   const [clickDelete, setClickDelete] = useState(false);
 
+  // Xử lý khi `selectedCustomer` thay đổi
+  useEffect(() => {
+    if (selectedCustomer) {
+      setClickEdit(false);
+      setClickDelete(false);
+    }
+  }, [selectedCustomer]);
+
   // Hàm chọn một khách hàng cụ thể để chỉnh sửa
   const handleClickNewButton = () => {
     setClickNew(!clickNew);
@@ -29,9 +37,10 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
   const handleClickEditButton = () => {
     if (selectedCustomer) {
       setClickEdit(true);
+      onEdit();
     }
   };
-
+  
   const handleSaveCustomer = (updatedCustomer: DataCustomer) => {
     onSave(updatedCustomer);
     setClickEdit(false);
@@ -39,7 +48,9 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
 
   // Hàm Xoá khách hàng
   const handleClickDeleteButton = () => {
-    setClickDelete(!clickDelete);
+    if (selectedCustomer) {
+      setClickDelete(true);
+    }
   };
 
   const handleConfirmDelete = () => {
@@ -84,7 +95,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
       <div className="edit-del-button-div">
         <div
           className={`button-div ${clickEdit ? "active" : "inactive"}`}
-          onClick={onEdit}
+          onClick={handleClickEditButton}
         >
           <Button
             variant="primary"

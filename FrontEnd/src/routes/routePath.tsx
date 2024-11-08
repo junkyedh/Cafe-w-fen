@@ -1,7 +1,7 @@
 
 import CustomerListLayout from "@/components/layout/customer-list-layout/CustomerListLayout";
 import { Link, Route } from "react-router-dom";
-
+import StaffListLayout from "@/components/layout/staff-list-layout/StaffListLayout";
 
 // Định nghĩa các route trong ứng dụng
 export const routePath = [
@@ -154,9 +154,7 @@ function MyCustomers() {
 
 function ListStaff() {
   return (
-    <div>
-      
-    </div>
+      <StaffListLayout/>
   );
 }
 

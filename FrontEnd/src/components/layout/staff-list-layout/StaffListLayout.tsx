@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import "./StaffListLayout.scss";
-import TabContent from "@/components/staff-list/content/TableContent";
+import TabContent from "@/components/staff-list/content/TabContent";
 const StaffListLayout = () => {
   const [isClick, setClick] = useState("all");
 

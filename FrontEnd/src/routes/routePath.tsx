@@ -2,6 +2,9 @@
 import CustomerListLayout from "@/components/layout/customer-list-layout/CustomerListLayout";
 import { Link, Route } from "react-router-dom";
 import StaffListLayout from "@/components/layout/staff-list-layout/StaffListLayout";
+import MaterialListLayout from "@/components/layout/material-list-layout/MaterialListLayout";
+import ProductListLayout from "@/components/layout/product-list-layout/ProductListLayout";
+
 
 // Định nghĩa các route trong ứng dụng
 export const routePath = [
@@ -116,17 +119,13 @@ function Menu() {
 
 function Material() {
   return (
-    <div>
-      
-  </div>
+    <MaterialListLayout />
   );
 }
 
 function Product() {
   return (
-    <div>
-  
-    </div>
+    <ProductListLayout /> 
   );
 }
 

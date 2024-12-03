@@ -1,4 +1,5 @@
 
+import BookingTableLayout from "@/components/layout/booking-table-layout/BookingTableLayout";
 import CustomerListLayout from "@/components/layout/customer-list-layout/CustomerListLayout";
 import { Link, Route } from "react-router-dom";
 import StaffListLayout from "@/components/layout/staff-list-layout/StaffListLayout";
@@ -139,9 +140,7 @@ function MyOrders() {
 
 function BookingTable() {
   return (
-    <div>
-     
-    </div>
+    <BookingTableLayout/>
   );
 }
 

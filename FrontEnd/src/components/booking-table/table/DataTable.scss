@@ -11,6 +11,25 @@
   background-color: get-color($theme-colors, "background-light"); /* Tùy chỉnh nền nếu cần */
 }
 
+.content-container {
+  display: flex; /* Hiển thị các thành phần con theo hàng ngang */
+  flex-direction: row; /* Sắp xếp các thành phần theo chiều ngang */
+  align-items: flex-start; /* Căn hai thành phần từ trên xuống */
+  justify-content: space-between; /* Khoảng cách giữa các thành phần */
+  gap: 20px; /* Khoảng cách giữa bảng và cột Order */
+  max-width: 1200px; /* Giới hạn chiều rộng */
+  width: 100%; /* Chiếm toàn bộ chiều rộng container */
+  margin: 0 auto; /* Căn giữa toàn bộ nội dung */
+}
+
+.grid-page {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding-left: 40px;
+}
+
 .table-grid {
   position: relative;
   place-items: center;
@@ -22,11 +41,27 @@
 
 .add-table-box {
   position: relative;
+  flex: 1;
   width: 762px;
   height: 747px;
   border-radius: 12px;
   background-color: get-color($theme-colors, "background");
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
+
+// .add-table-box {
+//   flex: 1; /* Chiếm không gian lớn hơn so với cột Order */
+//   min-width: 60%; /* Đặt chiều rộng tối thiểu */
+//   height: auto; /* Để chiều cao phụ thuộc vào nội dung */
+//   border-radius: 12px;
+//   background-color: get-color($theme-colors, "background");
+//   display: flex; /* Thêm Flexbox để căn chỉnh nội dung */
+//   flex-direction: column; /* Sắp xếp nội dung theo chiều dọc */
+//   padding: 20px;
+//   box-sizing: border-box; /* Bao gồm cả padding khi tính kích thước */
+// }
 
 .table-button {
   width: 140px;

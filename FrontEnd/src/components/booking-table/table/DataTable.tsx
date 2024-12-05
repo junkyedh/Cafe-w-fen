@@ -132,6 +132,7 @@ const DataTables: React.FC<DataTablesProps> = ({ onSelectTables }) => {
   const [selectedTableId, setSelectedTableId] = useState<string | null>(null); // Trạng thái lưu ID của hàng được chọn
   const [selectedOrder, setSelectedOrder] = useState<DataOrder | null>(null);
 
+
   // Khi chọn hàng, chỉ lưu đối tượng, chưa hiển thị hộp thoại
   const handleSelectedTablesButton = (table: DataTables) => {
     setSelectedTableId(table.id);
@@ -147,7 +148,6 @@ const DataTables: React.FC<DataTablesProps> = ({ onSelectTables }) => {
       seatedAt: "08/08/2024 00:07:57",
     });
   };
-
 
   //Pagination
   const [quantity, setQuantity] = useState(9);

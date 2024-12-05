@@ -51,18 +51,6 @@
   box-sizing: border-box;
 }
 
-// .add-table-box {
-//   flex: 1; /* Chiếm không gian lớn hơn so với cột Order */
-//   min-width: 60%; /* Đặt chiều rộng tối thiểu */
-//   height: auto; /* Để chiều cao phụ thuộc vào nội dung */
-//   border-radius: 12px;
-//   background-color: get-color($theme-colors, "background");
-//   display: flex; /* Thêm Flexbox để căn chỉnh nội dung */
-//   flex-direction: column; /* Sắp xếp nội dung theo chiều dọc */
-//   padding: 20px;
-//   box-sizing: border-box; /* Bao gồm cả padding khi tính kích thước */
-// }
-
 .table-button {
   width: 140px;
   height: 99px;

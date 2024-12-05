@@ -1,40 +1,29 @@
-import { useState, useEffect } from "react";
-import "./edit-customer.scss";
+import { useState } from "react";
+import "./create-material.scss";
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
+import NativeSelect from '@mui/material/NativeSelect';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import dayjs, { Dayjs } from 'dayjs';
-import { DataCustomer } from "@/components/customer-list/table/DataTable";
-import { MenuItem, Select } from "@mui/material";
+import { Dayjs } from 'dayjs'; 
 
-interface EditCustomerProps {
-  customer: DataCustomer;
-  onSave: (updatedCustomer: DataCustomer) => void;
-  onClose: () => void;
-}
+export const CreateMaterial = ({ onclose }: any) => {
 
-export const EditCustomer = ({ customer, onSave, onClose }: EditCustomerProps) => {
+  const generateMaterialId = () => {
+    const randomNumbers = Math.floor(100 + Math.random() * 900); // Random 3-digit number
+    return `cus${randomNumbers}`;
+  };
+
   const [formData, setFormData] = useState({
-    id: customer.id,
-    name: customer.name,
-    phone: customer.phone,
-    gender: customer.gender,
-    registrationDate: customer.registrationDate ? dayjs(customer.registrationDate) : null,
+    id: generateMaterialId(),
+    name: "",
+    phone: "",
+    gender: "Male",
+    registrationDate: null as Dayjs | null,
   });
-
-  useEffect(() => {
-    setFormData({
-      id: customer.id,
-      name: customer.name,
-      phone: customer.phone,
-      gender: customer.gender,
-      registrationDate: customer.registrationDate ? dayjs(customer.registrationDate) : null,
-    });
-  }, [customer]);
 
   const handleChange = (field: string, value: any) => {
     setFormData((prevData) => ({
@@ -43,15 +32,9 @@ export const EditCustomer = ({ customer, onSave, onClose }: EditCustomerProps) =
     }));
   };
 
-  const handleSave = () => {
-    const updatedCustomer: DataCustomer = {
-      ...formData,
-      registrationDate: formData.registrationDate
-        ? formData.registrationDate.format("dddd, M/D/YY h:mm A")
-        : "",
-    };
-    onSave(updatedCustomer);
-    onClose();
+  const handleCreateMaterial = () => {
+    console.log("Material Data:", formData);
+    onclose();
   };
 
   return (
@@ -59,14 +42,14 @@ export const EditCustomer = ({ customer, onSave, onClose }: EditCustomerProps) =
       <div className="modal-overlay">
         <div className="modal-content">
           {/* Close Button */}
-          <button className="close-button" onClick={onClose}>X</button>
+          <button className="close-button" onClick={onclose}>X</button>
           
-          <h3 className="title-add">EDIT CUSTOMER</h3>
+          <h3 className="title-add">CREATE MATERIAL</h3>
           <div className="add-info-box">
-            
+
             {/* ID Field (disabled) */}
             <TextField
-              className="customer-id"
+              className="material-id"
               label="ID"
               value={formData.id}
               variant="outlined"
@@ -75,37 +58,35 @@ export const EditCustomer = ({ customer, onSave, onClose }: EditCustomerProps) =
             />
 
             {/* Name and gender Fields on the Same Row */}
-            <div className="row-1">
+            <div className="row">
               <TextField
-                className="customer-name"
+                className="material-name"
                 label="Name"
                 value={formData.name}
                 onChange={(e) => handleChange("name", e.target.value)}
                 required
                 margin="normal"
               />
-              <FormControl 
-                  variant="standard" 
-                  sx={{ m: 0.25, minWidth: 100}}  
-                  className="customer-gender"
-                  style={{marginTop: 16}}
-                >
+              <FormControl margin="normal" className="material-gender">
                 <InputLabel htmlFor="gender-native">Gender</InputLabel>
-                <Select
-                  label = "Gender"
+                <NativeSelect
                   value={formData.gender}
                   onChange={(e) => handleChange("gender", e.target.value)}
+                  inputProps={{
+                    name: 'gender',
+                    id: 'gender-native',
+                  }}
                 >
-                  <MenuItem value="Male">Male</MenuItem>
-                  <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
-                </Select>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </NativeSelect>
               </FormControl>
             </div>
 
             {/* Phone Field */}
             <TextField
-              className="customer-phone"
+              className="material-phone"
               label="Phone"
               value={formData.phone}
               onChange={(e) => handleChange("phone", e.target.value)}
@@ -116,10 +97,15 @@ export const EditCustomer = ({ customer, onSave, onClose }: EditCustomerProps) =
 
             {/* Registration Date Field */}
             <DateTimePicker
-              className="customer-registration-date"
+              className="material-registration-date"
               label="Registration Date"
               value={formData.registrationDate}
               onChange={(newValue) => handleChange("registrationDate", newValue)}
+              // viewRenderers={{
+              //   hours: renderTimeViewClock,
+              //   minutes: renderTimeViewClock,
+              //   seconds: renderTimeViewClock,
+              // }}
               viewRenderers={{
                 hours: null,
                 minutes: null,
@@ -127,14 +113,14 @@ export const EditCustomer = ({ customer, onSave, onClose }: EditCustomerProps) =
               }}
             />
           </div>
-
+          
           {/* Buttons */}
           <div className="button-container">
-            <Button variant="contained" className="button-cancel" onClick={onClose}>
+            <Button variant="contained" className="button-cancel" onClick={onclose}>
               Cancel
             </Button>
-            <Button variant="contained" className="button-save" onClick={handleSave}>
-              Save
+            <Button variant="contained" className="button-create" onClick={handleCreateMaterial}>
+              Create
             </Button>
           </div>
         </div>

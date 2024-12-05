@@ -3,163 +3,185 @@ import "./DataTable.scss";
 import PaginationContent from "@/components/pagination/PaginationContent";
 import ActionButton from "../actionButton/ActionButton";
 
-export interface DataCustomer {
+export interface DataStaff {
   id: string;
   name: string;
-  phone: string;
   gender: string;
-  registrationDate: string;
+  birthday: string;
+  role: string;
+  phone: string;
 }
 
-export const initialDataCustomer: DataCustomer[] = [
+export const initialDataStaff: DataStaff[] = [
   {
     id: "1",
     name: "Dương Hân",
-    phone: "0336126905",
     gender: "Female",
-    registrationDate: "Tuesday, 1/13/15 1:30 PM"
+    birthday: "1995-12-30",
+    role: "Thu ngân",
+    phone: "0336126905",
   },
   {
     id: "2",
     name: "Nguyễn Anh",
-    phone: "0345678901",
     gender: "Male",
-    registrationDate: "Wednesday, 2/14/15 10:15 AM"
+    birthday: "2015-02-14",
+    role: "Pha chế",
+    phone: "0345678901",
   },
   {
     id: "3",
     name: "Trần Thị Bích",
-    phone: "0356789012",
     gender: "Female",
-    registrationDate: "Thursday, 3/15/15 2:45 PM"
+    birthday: "2015-03-15",
+    role: "Phục vụ",
+    phone: "0356789012",
   },
   {
     id: "4",
     name: "Lê Hồng Sơn",
-    phone: "0367890123",
     gender: "Male",
-    registrationDate: "Friday, 4/16/15 4:00 PM"
+    birthday: "2015-04-16",
+    role: "Bảo vệ",
+    phone: "0367890123",
   },
   {
     id: "5",
     name: "Phạm Minh Kha",
-    phone: "0378901234",
     gender: "Male",
-    registrationDate: "Saturday, 5/17/15 6:30 PM"
+    birthday: "2015-05-17",
+    role: "Quản lý",
+    phone: "0378901234",
   },
   {
     id: "6",
     name: "Đặng Thảo Linh",
-    phone: "0389012345",
     gender: "Female",
-    registrationDate: "Sunday, 6/18/15 9:15 AM"
+    birthday: "2015-06-18",
+    role: "Thu ngân",
+    phone: "0389012345",
   },
   {
     id: "7",
     name: "Ngô Vũ Long",
-    phone: "0390123456",
     gender: "Male",
-    registrationDate: "Monday, 7/19/15 11:45 AM"
+    birthday: "2015-07-19",
+    role: "Pha chế",
+    phone: "0390123456",
   },
   {
     id: "8",
     name: "Bùi Gia Hân",
-    phone: "0312345678",
     gender: "Female",
-    registrationDate: "Tuesday, 8/20/15 8:00 AM"
+    birthday: "2015-08-20",
+    role: "Phục vụ",
+    phone: "0312345678",
   },
   {
     id: "9",
     name: "Hoàng Hải Nam",
-    phone: "0323456789",
     gender: "Male",
-    registrationDate: "Wednesday, 9/21/15 5:30 PM"
+    birthday: "2015-09-21",
+    role: "Bảo vệ",
+    phone: "0323456789",
   },
   {
     id: "10",
     name: "Lý Thanh Nga",
-    phone: "0334567890",
     gender: "Female",
-    registrationDate: "Thursday, 10/22/15 7:15 PM"
+    birthday: "2015-10-22",
+    role: "Quản lý",
+    phone: "0334567890",
   },
   {
     id: "11",
     name: "Võ Thị Mai",
-    phone: "0345678901",
     gender: "Female",
-    registrationDate: "Friday, 11/23/15 3:30 PM"
+    birthday: "2015-11-23",
+    role: "Thu ngân",
+    phone: "0345678901",
   },
   {
     id: "12",
     name: "Phan Văn Bảo",
-    phone: "0356789012",
     gender: "Male",
-    registrationDate: "Saturday, 12/24/15 12:45 PM"
+    birthday: "2015-12-24",
+    role: "Pha chế",
+    phone: "0356789012",
   },
   {
     id: "13",
     name: "Nguyễn Thị Lan",
-    phone: "0367890123",
     gender: "Female",
-    registrationDate: "Sunday, 1/25/16 6:10 AM"
+    birthday: "2016-01-25",
+    role: "Phục vụ",
+    phone: "0367890123",
   },
   {
     id: "14",
     name: "Lê Minh Quang",
-    phone: "0378901234",
     gender: "Male",
-    registrationDate: "Monday, 2/26/16 8:40 AM"
+    birthday: "2016-02-26",
+    role: "Bảo vệ",
+    phone: "0378901234",
   },
   {
     id: "15",
     name: "Trần Thanh Hương",
-    phone: "0389012345",
     gender: "Female",
-    registrationDate: "Tuesday, 3/27/16 3:25 PM"
+    birthday: "2016-03-27",
+    role: "Quản lý",
+    phone: "0389012345",
   },
   {
     id: "16",
     name: "Đỗ Đức Thắng",
-    phone: "0390123456",
     gender: "Male",
-    registrationDate: "Wednesday, 4/28/16 9:00 AM"
+    birthday: "2016-04-28",
+    role: "Thu ngân",
+    phone: "0390123456",
   },
   {
     id: "17",
     name: "Vũ Thị Bảo Ngọc",
-    phone: "0312345678",
     gender: "Female",
-    registrationDate: "Thursday, 5/29/16 4:45 PM"
+    birthday: "2016-05-29",
+    role: "Pha chế",
+    phone: "0312345678",
   },
   {
     id: "18",
     name: "Trịnh Công Tuấn",
-    phone: "0323456789",
     gender: "Male",
-    registrationDate: "Friday, 6/30/16 7:20 AM"
+    birthday: "2016-06-30",
+    role: "Phục vụ",
+    phone: "0323456789",
   },
   {
     id: "19",
     name: "Hà Phương Linh",
-    phone: "0334567890",
     gender: "Female",
-    registrationDate: "Saturday, 7/31/16 10:05 AM"
+    birthday: "2016-07-31",
+    role: "Bảo vệ",
+    phone: "0334567890",
   },
   {
     id: "20",
     name: "Ngô Thị Cẩm Vân",
-    phone: "0345678901",
     gender: "Female",
-    registrationDate: "Sunday, 8/1/16 1:50 PM"
+    birthday: "2016-08-01",
+    role: "Quản lý",
+    phone: "0345678901",
   }
 ];
 
+
 interface DataTableProps {
-  onSelectCustomer: (customer: DataCustomer) => void;
+  onSelectStaff: (staff: DataStaff) => void;
 }
 
-const DataTable: React.FC<DataTableProps> = ({ onSelectCustomer }) => {
-  const [data, setData] = useState<DataCustomer[]>(initialDataCustomer);
+const DataTable: React.FC<DataTableProps> = ({ onSelectStaff }) => {
+  const [data, setData] = useState<DataStaff[]>(initialDataStaff);
   const [selectedRowId, setSelectedRowId] = useState<string | null>(null); // Trạng thái lưu ID của hàng được chọn
 
 
@@ -169,19 +191,19 @@ const DataTable: React.FC<DataTableProps> = ({ onSelectCustomer }) => {
     setSelectedRowId(newSelectedId);
 
     // Lấy thông tin của khách hàng đã chọn
-    const selectedCustomer = data.find((customer) => customer.id === newSelectedId) || null;
-    if (selectedCustomer) {
-      onSelectCustomer(selectedCustomer); // Gửi khách hàng đã chọn lên ActionButton
+    const selectedStaff = data.find((staff) => staff.id === newSelectedId) || null;
+    if (selectedStaff) {
+      onSelectStaff(selectedStaff); // Gửi khách hàng đã chọn lên ActionButton
     }
   };
 
   //Pagination
   const [quantity, setQuantity] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(initialDataCustomer.length / quantity);
+  const totalPages = Math.ceil(initialDataStaff.length / quantity);
   const startIndex = (currentPage - 1) * quantity;
   const endIndex = startIndex + quantity;
-  const currentData = initialDataCustomer.slice(startIndex, endIndex);
+  const currentData = initialDataStaff.slice(startIndex, endIndex);
   const items = {
     currentPage,
     setCurrentPage,
@@ -198,9 +220,10 @@ const DataTable: React.FC<DataTableProps> = ({ onSelectCustomer }) => {
             <th></th>
             <th>ID</th>
             <th>NAME</th>
-            <th>PHONE NUMBER</th>
             <th>GENDER</th>
-            <th>REGISTRATION DATE</th>
+            <th>BIRTHDAY</th>
+            <th>ROLE</th>
+            <th>PHONE NUMBER</th>
           </tr>
         </thead>
         <tbody>
@@ -220,9 +243,10 @@ const DataTable: React.FC<DataTableProps> = ({ onSelectCustomer }) => {
               </td>
               <td>{item.id}</td>
               <td>{item.name}</td>
-              <td>{item.phone}</td>
               <td>{item.gender}</td>
-              <td>{item.registrationDate}</td>
+              <td>{item.birthday}</td>
+              <td>{item.role}</td>
+              <td>{item.phone}</td>
             </tr>
           ))}
         </tbody>

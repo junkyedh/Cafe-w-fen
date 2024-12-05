@@ -3,30 +3,30 @@ import "./ActionButton.scss";
 import Button from "@/components/ui/Button";
 import { Icon } from "@iconify/react";
 import "../../../scss/_variables.scss";
-import { CreateCustomer } from "@/components/form/Create/Customer/create-customer";
-import { EditCustomer } from "@/components/form/Edit/Customer/edit-customer";
-import { DataCustomer } from "../table/DataTable";
+import { DataProduct } from "../table/DataTable";
+import { CreateProduct } from "@/components/form/Create/Product/create-product";
+import { EditProduct } from "@/components/form/Edit/Product/edit-product";
 import DeleteButton from "@/components/form/Delete/delete-button";
 
 interface ActionButtonProps {
-  selectedCustomer: DataCustomer | null;
+  selectedProduct: DataProduct | null;
   onEdit: () => void;
-  onSave: (updatedCustomer: DataCustomer) => void;
+  onSave: (updatedProduct: DataProduct) => void;
   onDelete: () => void;
 }
 
-const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, onSave, onDelete }) => {
+const ActionButton: React.FC<ActionButtonProps> = ({ selectedProduct, onEdit, onSave, onDelete }) => {
   const [clickNew, setClickNew] = useState(false);
   const [clickEdit, setClickEdit] = useState(false);
   const [clickDelete, setClickDelete] = useState(false);
 
-  // Xử lý khi `selectedCustomer` thay đổi
+  // Xử lý khi `selectedProduct` thay đổi
   useEffect(() => {
-    if (selectedCustomer) {
+    if (selectedProduct) {
       setClickEdit(false);
       setClickDelete(false);
     }
-  }, [selectedCustomer]);
+  }, [selectedProduct]);
 
   // Hàm chọn một khách hàng cụ thể để chỉnh sửa
   const handleClickNewButton = () => {
@@ -35,20 +35,20 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
 
   // Hàm chọn một khách hàng cụ thể để chỉnh sửa
   const handleClickEditButton = () => {
-    if (selectedCustomer) {
+    if (selectedProduct) {
       setClickEdit(true);
       onEdit();
     }
   };
   
-  const handleSaveCustomer = (updatedCustomer: DataCustomer) => {
-    onSave(updatedCustomer);
+  const handleSaveProduct = (updatedProduct: DataProduct) => {
+    onSave(updatedProduct);
     setClickEdit(false);
   };
 
   // Hàm Xoá khách hàng
   const handleClickDeleteButton = () => {
-    if (selectedCustomer) {
+    if (selectedProduct) {
       setClickDelete(true);
     }
   };
@@ -89,7 +89,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
           New
         </Button>
       </div>
-      {clickNew && <CreateCustomer onclose={handleClickNewButton} />}
+      {clickNew && <CreateProduct onclose={handleClickNewButton} />}
 
       {/* Hiển thị nút Edit và Delete */}
       <div className="edit-del-button-div">
@@ -116,10 +116,10 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
             Edit
           </Button>
         </div>
-        {clickEdit && selectedCustomer && (
-          <EditCustomer
-            customer={selectedCustomer}
-            onSave={handleSaveCustomer}
+        {clickEdit && selectedProduct && (
+          <EditProduct
+            product={selectedProduct}
+            onSave={handleSaveProduct}
             onClose={() => setClickEdit(false)}
           />
         )}

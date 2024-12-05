@@ -61,33 +61,32 @@
   gap: 15px;
 }
 
-.row-1 {
+.row {
   display: flex;
-  gap: 5%;
+  gap: 30px;
   align-items: flex-start;
 
   .label {
     color: get-color($primary, "100");
   }
 
-  .customer-name {
-    left: 0;
-    width: calc(70%); // Set width for customer name
+
+  .material-name {
+    left: 2.8%;
+    width: calc(70% - 15px); // Set width for material name
     
   }
 
-  .customer-gender {
-    width: calc(20%); // Set a fixed width for customer sex
+
+  .material-gender {
+    width: 90px; // Set a fixed width for material gender
     max-width: 100%; // Ensure it does not exceed its container
   }
 }
 
-.customer-id {
-  width: 70%;
-  max-width: 80%;
-}
-.customer-phone,
-.customer-registration-date {
+.material-id,
+.material-phone,
+.material-registration-date {
   width: 100%;
 }
 
@@ -110,7 +109,7 @@
 
   }
 
-  .button-edit {
+  .button-create {
     background-color: get-color($primary,"200");
     color: white;
     border: get-color($primary,"200") 1px solid;

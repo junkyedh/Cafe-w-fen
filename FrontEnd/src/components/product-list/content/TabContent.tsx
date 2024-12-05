@@ -1,43 +1,40 @@
 import React, { useState } from "react";
 import ActionButton from "../actionButton/ActionButton";
 import "./TabContent.scss";
-import DataTable from "../table/DataTable";
-import { EditCustomer } from "@/components/form/Edit/Customer/edit-customer";
-import { DataCustomer } from "../table/DataTable";
-import DeleteButton from "@/components/form/Delete/delete-button";
+import DataTable, { DataProduct } from "../table/DataTable";
 
 const TabContent = () => {
-  const [selectedCustomer, setSelectedCustomer] = useState<DataCustomer | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<DataProduct | null>(null);
   const [isEditVisible, setEditVisible] = useState(false);
   const [isDeleteVisible, setDeleteVisible] = useState(false);
 
   // Hàm để chọn khách hàng và mở hộp thoại chỉnh sửa
-  const handleSelectCustomer = (customer: DataCustomer) => {
-    setSelectedCustomer(customer);
+  const handleSelectProduct = (product: DataProduct) => {
+    setSelectedProduct(product);
   };
 
   const handleEditButtonClick = () => {
-    if (selectedCustomer) {
+    if (selectedProduct) {
       setEditVisible(true);
     }
   };
 
-  const handleSaveCustomer = (updatedCustomer: DataCustomer) => {
+  const handleSaveProduct = (updatedProduct: DataProduct) => {
     // Thực hiện logic lưu cập nhật ở đây
-    console.log("Updated Customer:", updatedCustomer);
+    console.log("Updated Product:", updatedProduct);
     setEditVisible(false);
   };
 
   const handleDeleteButtonClick = () => {
-    if (selectedCustomer) {
+    if (selectedProduct) {
       setDeleteVisible(true);
     }
   };
   const handleConfirmDelete = () => {
-    if (selectedCustomer) {
-      // Logic to delete the selected customer
-      console.log("Deleted Customer:", selectedCustomer);
-      setSelectedCustomer(null);
+    if (selectedProduct) {
+      // Logic to delete the selected product
+      console.log("Deleted Product:", selectedProduct);
+      setSelectedProduct(null);
     }
     setDeleteVisible(false);
   };
@@ -50,14 +47,14 @@ const TabContent = () => {
     <div className="tab-content-div">
       {/* Truyền props vào ActionButton */}
       <ActionButton
-        selectedCustomer={selectedCustomer}
+        selectedProduct={selectedProduct}
         onEdit={handleEditButtonClick}
-        onSave={handleSaveCustomer}
+        onSave={handleSaveProduct}
         onDelete={handleDeleteButtonClick}
       />
 
       {/* DataTable cho phép chọn khách hàng */}
-      <DataTable onSelectCustomer={handleSelectCustomer}/>
+      <DataTable onSelectProduct={handleSelectProduct}/>
 
     </div>
   );

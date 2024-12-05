@@ -1,43 +1,41 @@
 import React, { useState } from "react";
 import ActionButton from "../actionButton/ActionButton";
 import "./TabContent.scss";
-import DataTable from "../table/DataTable";
-import { EditCustomer } from "@/components/form/Edit/Customer/edit-customer";
-import { DataCustomer } from "../table/DataTable";
 import DeleteButton from "@/components/form/Delete/delete-button";
+import DataTable, { DataMaterial } from "../table/DataTable";
 
 const TabContent = () => {
-  const [selectedCustomer, setSelectedCustomer] = useState<DataCustomer | null>(null);
+  const [selectedMaterial, setSelectedMaterial] = useState<DataMaterial | null>(null);
   const [isEditVisible, setEditVisible] = useState(false);
   const [isDeleteVisible, setDeleteVisible] = useState(false);
 
   // Hàm để chọn khách hàng và mở hộp thoại chỉnh sửa
-  const handleSelectCustomer = (customer: DataCustomer) => {
-    setSelectedCustomer(customer);
+  const handleSelectMaterial = (material: DataMaterial) => {
+    setSelectedMaterial(material);
   };
 
   const handleEditButtonClick = () => {
-    if (selectedCustomer) {
+    if (selectedMaterial) {
       setEditVisible(true);
     }
   };
 
-  const handleSaveCustomer = (updatedCustomer: DataCustomer) => {
+  const handleSaveMaterial = (updatedMaterial: DataMaterial) => {
     // Thực hiện logic lưu cập nhật ở đây
-    console.log("Updated Customer:", updatedCustomer);
+    console.log("Updated Material:", updatedMaterial);
     setEditVisible(false);
   };
 
   const handleDeleteButtonClick = () => {
-    if (selectedCustomer) {
+    if (selectedMaterial) {
       setDeleteVisible(true);
     }
   };
   const handleConfirmDelete = () => {
-    if (selectedCustomer) {
-      // Logic to delete the selected customer
-      console.log("Deleted Customer:", selectedCustomer);
-      setSelectedCustomer(null);
+    if (selectedMaterial) {
+      // Logic to delete the selected material
+      console.log("Deleted Material:", selectedMaterial);
+      setSelectedMaterial(null);
     }
     setDeleteVisible(false);
   };
@@ -50,14 +48,14 @@ const TabContent = () => {
     <div className="tab-content-div">
       {/* Truyền props vào ActionButton */}
       <ActionButton
-        selectedCustomer={selectedCustomer}
+        selectedMaterial={selectedMaterial}
         onEdit={handleEditButtonClick}
-        onSave={handleSaveCustomer}
+        onSave={handleSaveMaterial}
         onDelete={handleDeleteButtonClick}
       />
 
       {/* DataTable cho phép chọn khách hàng */}
-      <DataTable onSelectCustomer={handleSelectCustomer}/>
+      <DataTable onSelectMaterial={handleSelectMaterial}/>
 
     </div>
   );

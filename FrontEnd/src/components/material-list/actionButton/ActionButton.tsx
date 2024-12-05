@@ -3,30 +3,30 @@ import "./ActionButton.scss";
 import Button from "@/components/ui/Button";
 import { Icon } from "@iconify/react";
 import "../../../scss/_variables.scss";
-import { CreateCustomer } from "@/components/form/Create/Customer/create-customer";
-import { EditCustomer } from "@/components/form/Edit/Customer/edit-customer";
-import { DataCustomer } from "../table/DataTable";
 import DeleteButton from "@/components/form/Delete/delete-button";
+import { DataMaterial } from "../table/DataTable";
+import { CreateMaterial } from "@/components/form/Create/Material/create-material";
+import { EditMaterial } from "@/components/form/Edit/Material/edit-material";
 
 interface ActionButtonProps {
-  selectedCustomer: DataCustomer | null;
+  selectedMaterial: DataMaterial | null;
   onEdit: () => void;
-  onSave: (updatedCustomer: DataCustomer) => void;
+  onSave: (updatedMaterial: DataMaterial) => void;
   onDelete: () => void;
 }
 
-const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, onSave, onDelete }) => {
+const ActionButton: React.FC<ActionButtonProps> = ({ selectedMaterial, onEdit, onSave, onDelete }) => {
   const [clickNew, setClickNew] = useState(false);
   const [clickEdit, setClickEdit] = useState(false);
   const [clickDelete, setClickDelete] = useState(false);
 
-  // Xử lý khi `selectedCustomer` thay đổi
+  // Xử lý khi `selectedMaterial` thay đổi
   useEffect(() => {
-    if (selectedCustomer) {
+    if (selectedMaterial) {
       setClickEdit(false);
       setClickDelete(false);
     }
-  }, [selectedCustomer]);
+  }, [selectedMaterial]);
 
   // Hàm chọn một khách hàng cụ thể để chỉnh sửa
   const handleClickNewButton = () => {
@@ -35,20 +35,20 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
 
   // Hàm chọn một khách hàng cụ thể để chỉnh sửa
   const handleClickEditButton = () => {
-    if (selectedCustomer) {
+    if (selectedMaterial) {
       setClickEdit(true);
       onEdit();
     }
   };
   
-  const handleSaveCustomer = (updatedCustomer: DataCustomer) => {
-    onSave(updatedCustomer);
+  const handleSaveMaterial = (updatedMaterial: DataMaterial) => {
+    onSave(updatedMaterial);
     setClickEdit(false);
   };
 
   // Hàm Xoá khách hàng
   const handleClickDeleteButton = () => {
-    if (selectedCustomer) {
+    if (selectedMaterial) {
       setClickDelete(true);
     }
   };
@@ -89,7 +89,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
           New
         </Button>
       </div>
-      {clickNew && <CreateCustomer onclose={handleClickNewButton} />}
+      {clickNew && <CreateMaterial onclose={handleClickNewButton} />}
 
       {/* Hiển thị nút Edit và Delete */}
       <div className="edit-del-button-div">
@@ -116,10 +116,10 @@ const ActionButton: React.FC<ActionButtonProps> = ({ selectedCustomer, onEdit, o
             Edit
           </Button>
         </div>
-        {clickEdit && selectedCustomer && (
-          <EditCustomer
-            customer={selectedCustomer}
-            onSave={handleSaveCustomer}
+        {clickEdit && selectedMaterial && (
+          <EditMaterial
+            material={selectedMaterial}
+            onSave={handleSaveMaterial}
             onClose={() => setClickEdit(false)}
           />
         )}

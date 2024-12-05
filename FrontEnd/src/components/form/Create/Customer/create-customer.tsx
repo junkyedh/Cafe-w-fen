@@ -21,7 +21,7 @@ export const CreateCustomer = ({ onclose }: any) => {
     id: generateCustomerId(),
     name: "",
     phone: "",
-    sex: "Male",
+    gender: "Male",
     registrationDate: null as Dayjs | null,
   });
 
@@ -57,7 +57,7 @@ export const CreateCustomer = ({ onclose }: any) => {
               margin="normal"
             />
 
-            {/* Name and Sex Fields on the Same Row */}
+            {/* Name and gender Fields on the Same Row */}
             <div className="row">
               <TextField
                 className="customer-name"
@@ -67,14 +67,14 @@ export const CreateCustomer = ({ onclose }: any) => {
                 required
                 margin="normal"
               />
-              <FormControl margin="normal" className="customer-sex">
-                <InputLabel htmlFor="sex-native">Sex</InputLabel>
+              <FormControl margin="normal" className="customer-gender">
+                <InputLabel htmlFor="gender-native">Gender</InputLabel>
                 <NativeSelect
-                  value={formData.sex}
-                  onChange={(e) => handleChange("sex", e.target.value)}
+                  value={formData.gender}
+                  onChange={(e) => handleChange("gender", e.target.value)}
                   inputProps={{
-                    name: 'sex',
-                    id: 'sex-native',
+                    name: 'gender',
+                    id: 'gender-native',
                   }}
                 >
                   <option value="male">Male</option>

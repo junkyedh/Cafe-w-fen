@@ -70,24 +70,41 @@
     color: get-color($primary, "100");
   }
 
-  .customer-name {
+  .product-name {
     left: 0;
     width: calc(70%); // Set width for customer name
     
   }
-
-  .customer-gender {
-    width: calc(20%); // Set a fixed width for customer sex
+  
+  .product-gender {
+    width: calc(23%); // Set a fixed width for customer gender
     max-width: 100%; // Ensure it does not exceed its container
   }
 }
 
-.customer-id {
-  width: 70%;
-  max-width: 80%;
+.row-2 {
+  display: flex;
+  gap: 5%;
+  align-items: baseline;
+
+  .label {
+    color: get-color($primary, "100");
+  }
+
+  .product-role {
+    width: calc(50%); // Set width for product name
+    
+  }
+  .product-birthday {
+    width: calc(50%); // Set a fixed width for product gender
+    max-width: 100%; // Ensure it does not exceed its container
+  }
 }
-.customer-phone,
-.customer-registration-date {
+
+.product-id {
+  width: 70%;
+}
+.product-phone {
   width: 100%;
 }
 

@@ -91,8 +91,8 @@ export const EditTables = ({ tables, onSave, onClose }: EditTablesProps) => {
                   id: 'tb-category',
                 }}
               >
-                <option value="table">Male</option>
-                <option value="chair">Female</option>
+                <option value="table">Table</option>
+                <option value="chair">Chair</option>
                 <option value="other">Other</option>
               </NativeSelect>
             </FormControl>

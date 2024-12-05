@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./DataTable.scss";
+import DataOrder from "../order/DataOrder";
 import PaginationContent from "@/components/pagination/PaginationContent";
 import { EditTables } from "@/components/form/Edit/Tables/edit-tables";
 import ActionButton from "../actionButton/ActionButton";
@@ -129,11 +130,23 @@ interface DataTablesProps {
 const DataTables: React.FC<DataTablesProps> = ({ onSelectTables }) => {
   const [data, setData] = useState<DataTables[]>(initialDataTables);
   const [selectedTableId, setSelectedTableId] = useState<string | null>(null); // Trạng thái lưu ID của hàng được chọn
+  const [selectedOrder, setSelectedOrder] = useState<DataOrder | null>(null);
+
 
   // Khi chọn hàng, chỉ lưu đối tượng, chưa hiển thị hộp thoại
   const handleSelectedTablesButton = (table: DataTables) => {
     setSelectedTableId(table.id);
     onSelectTables(table);
+    setSelectedOrder({
+      tableName: table.name,
+      booking: "08/08/2024 00:07:57",
+      idInvoice: "CF34562",
+      phone: "0336126905",
+      status: "available",
+      service: "Dine in",
+      subtotal: "đ93.000",
+      seatedAt: "08/08/2024 00:07:57",
+    });
   };
 
   //Pagination
@@ -171,18 +184,22 @@ const DataTables: React.FC<DataTablesProps> = ({ onSelectTables }) => {
           <span>reserved</span>
         </div>
       </div>
-      <div className="add-table-box">
-        <div className="table-grid">
-          {initialDataTables.map((table) => (
-            <button
-              key={table.id}
-              className={`table-button ${selectedTableId === table.id ? "selected" : "available"}`}
-              onClick={() => handleSelectedTablesButton(table)}
-            >
-              {table.name}
-            </button>
-          ))}
+      <div className="grid-page">
+        <div className="add-table-box">
+          <div className="table-grid">
+            {initialDataTables.map((table) => (
+              <button
+                key={table.id}
+                className={`table-button ${selectedTableId === table.id ? "selected" : "available"}`}
+                onClick={() => handleSelectedTablesButton(table)}
+              >
+                {table.name}
+              </button>
+            ))}
+          </div>
         </div>
+        {/* Cột thông tin Order */}
+        <DataOrder order={selectedOrder} />
       </div>
     </div>      
   );
